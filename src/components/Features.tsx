@@ -78,13 +78,13 @@ function FeatureCard({
 
   const cardStyle = feature.comingSoon
     ? {
-        border: "1.5px dashed #C4B5FD",
-        background: "#EDE9FE",
+        border: "1.5px dashed rgba(139,92,246,0.35)",
+        background: "rgba(139,92,246,0.06)",
         animationDelay: `${index * 80}ms`,
       }
     : {
-        border: "1.5px solid #EDE9FE",
-        background: "#FFFFFF",
+        border: "1.5px solid rgba(255,255,255,0.07)",
+        background: "rgba(255,255,255,0.04)",
         animationDelay: `${index * 80}ms`,
       };
 
@@ -112,10 +112,10 @@ function FeatureCard({
 
       {/* Text */}
       <div className="flex flex-col gap-2">
-        <h3 className="text-[15px] font-black tracking-tight text-gray-900">
+        <h3 className="text-[15px] font-black tracking-tight text-white">
           {feature.title}
         </h3>
-        <p className="text-sm leading-relaxed text-gray-500">
+        <p className="text-sm leading-relaxed text-white/55">
           {feature.description}
         </p>
       </div>
@@ -130,7 +130,7 @@ export default function Features() {
     <section
       id="features"
       className="relative overflow-hidden py-24 lg:py-32"
-      style={{ background: "#F7F6FF" }}
+      style={{ background: "#1A1035" }}
     >
       {/* Very subtle top-edge purple bloom so the section doesn't hard-cut from the dark hero */}
       <div
@@ -149,13 +149,13 @@ export default function Features() {
           style={{ animationDelay: "0ms" }}
         >
           {/* Eyebrow label */}
-          <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-brand-purple">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-brand-green">
             What&rsquo;s inside
           </p>
 
           {/* Headline */}
           <h2
-            className="mb-5 font-black leading-[1.05] tracking-tight text-gray-900"
+            className="mb-5 font-black leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)" }}
           >
             Everything your inbox needs.{" "}
@@ -163,7 +163,7 @@ export default function Features() {
           </h2>
 
           {/* Subheadline */}
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-gray-500">
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-white/50">
             Built for the people who&rsquo;ve been putting off inbox cleanup for
             months. Or years.
           </p>
@@ -201,11 +201,11 @@ export default function Features() {
 
         /* Hover: purple border glow + subtle lift */
         .feature-card:hover {
-          border-color: #8B5CF6 !important;
+          border-color: rgba(139, 92, 246, 0.5) !important;
+          background: rgba(139, 92, 246, 0.08) !important;
           box-shadow:
-            0 0 0 1px rgba(139, 92, 246, 0.15),
-            0 8px 32px rgba(139, 92, 246, 0.10),
-            0 2px 8px rgba(0, 0, 0, 0.06);
+            0 0 0 1px rgba(139, 92, 246, 0.20),
+            0 8px 32px rgba(139, 92, 246, 0.12);
           transform: translateY(-2px);
         }
       `}</style>

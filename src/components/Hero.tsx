@@ -1,6 +1,6 @@
 "use client";
 
-import DeletionAnimation from "@/components/DeletionAnimation";
+import UnsubscribeAnimation from "@/components/UnsubscribeAnimation";
 
 export default function Hero() {
   return (
@@ -204,7 +204,7 @@ export default function Hero() {
                 "drop-shadow(0 40px 80px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(139,92,246,0.25))",
             }}
           >
-            <DeletionAnimation />
+            <UnsubscribeAnimation />
           </div>
         </div>
       </div>

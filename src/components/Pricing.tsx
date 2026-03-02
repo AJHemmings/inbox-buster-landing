@@ -77,7 +77,7 @@ const PLANS: Plan[] = [
 
 function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
   const classes: Record<Plan["badgeStyle"], string> = {
-    gray: "bg-gray-100 text-gray-500",
+    gray: "bg-white/10 text-white/60",
     purple: "bg-brand-purple text-white",
     green: "bg-brand-green/15 text-brand-green",
   };
@@ -148,16 +148,17 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
   return (
     <div
       className={[
-        "pricing-card relative flex flex-col rounded-2xl bg-white p-7",
+        "pricing-card relative flex flex-col rounded-2xl p-7",
         plan.hero
-          ? "md:-mt-4 md:mb-4 shadow-xl border-2 border-brand-purple"
-          : "border border-gray-200",
+          ? "md:-mt-4 md:mb-4 border-2 border-brand-purple"
+          : "border border-white/8",
       ].join(" ")}
       style={{
+        background: plan.hero ? "rgba(139,92,246,0.10)" : "rgba(255,255,255,0.04)",
         animationDelay: `${index * 100}ms`,
         boxShadow: plan.hero
-          ? "0 20px 60px rgba(139,92,246,0.10), 0 4px 20px rgba(0,0,0,0.06)"
-          : "0 1px 4px rgba(0,0,0,0.04)",
+          ? "0 20px 60px rgba(139,92,246,0.20), 0 0 0 1px rgba(139,92,246,0.15)"
+          : "none",
       }}
     >
       {/* Badge */}
@@ -168,18 +169,18 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       {/* Price row */}
       <div className="mb-2 flex items-baseline gap-1">
         <span
-          className="font-black tracking-tight text-gray-900"
+          className="font-black tracking-tight text-white"
           style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1 }}
         >
           {plan.price}
         </span>
         {plan.period && (
-          <span className="text-sm font-medium text-gray-400">{plan.period}</span>
+          <span className="text-sm font-medium text-white/40">{plan.period}</span>
         )}
       </div>
 
       {/* Description */}
-      <p className="mb-6 text-sm leading-relaxed text-gray-500">
+      <p className="mb-6 text-sm leading-relaxed text-white/55">
         {plan.description}
       </p>
 
@@ -205,7 +206,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
                 aria-hidden="true"
               />
             </span>
-            <span className="text-sm font-medium text-gray-700">{feature}</span>
+            <span className="text-sm font-medium text-white/75">{feature}</span>
           </li>
         ))}
       </ul>
@@ -224,7 +225,8 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden bg-brand-light py-24 lg:py-32"
+      className="relative overflow-hidden py-24 lg:py-32"
+      style={{ background: "#1A1035" }}
     >
       {/* ── Top edge — gradient bridge from the dark InAction section above ── */}
       <div
@@ -276,7 +278,7 @@ export default function Pricing() {
 
           {/* Headline */}
           <h2
-            className="mb-4 font-black leading-[1.05] tracking-tight text-gray-900"
+            className="mb-4 font-black leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(1.9rem, 4.5vw, 3rem)" }}
           >
             Simple pricing.{" "}
@@ -284,7 +286,7 @@ export default function Pricing() {
           </h2>
 
           {/* Subheadline */}
-          <p className="text-base leading-relaxed text-gray-500">
+          <p className="text-base leading-relaxed text-white/50">
             Start free. Upgrade when you&rsquo;re ready.
           </p>
         </div>
@@ -298,7 +300,7 @@ export default function Pricing() {
 
         {/* ── Stripe Climate callout ────────────────────────────────────── */}
         <p
-          className="pricing-callout mx-auto mt-12 max-w-md text-center text-sm leading-relaxed text-gray-400"
+          className="pricing-callout mx-auto mt-12 max-w-md text-center text-sm leading-relaxed text-white/40"
           style={{ animationDelay: "350ms" }}
         >
           🌱 1% of every subscription goes to carbon removal via{" "}
@@ -306,7 +308,7 @@ export default function Pricing() {
             href="https://stripe.com/climate"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-gray-500 underline underline-offset-2 decoration-gray-300 transition-colors hover:text-brand-purple hover:decoration-brand-purple/40"
+            className="font-semibold text-white/55 underline underline-offset-2 decoration-white/20 transition-colors hover:text-brand-purple hover:decoration-brand-purple/40"
           >
             Stripe Climate
           </a>

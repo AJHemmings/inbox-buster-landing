@@ -5,43 +5,15 @@ import { Check, Trash2 } from "lucide-react";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const EMAILS = [
-  {
-    id: 1,
-    tag: "Promotions",
-    sender: "Groupon",
-    subject: "50% off today only!",
-    tagColor: "bg-orange-500",
-  },
-  {
-    id: 2,
-    tag: "Newsletter",
-    sender: "Medium Daily",
-    subject: "Top stories for you",
-    tagColor: "bg-blue-500",
-  },
-  {
-    id: 3,
-    tag: "Receipts",
-    sender: "Amazon",
-    subject: "Your order has shipped",
-    tagColor: "bg-yellow-500",
-  },
-  {
-    id: 4,
-    tag: "Promotions",
-    sender: "LinkedIn",
-    subject: "You have 14 new notifications",
-    tagColor: "bg-sky-500",
-  },
-  {
-    id: 5,
-    tag: "Newsletter",
-    sender: "Substack",
-    subject: "Weekend reads",
-    tagColor: "bg-purple-500",
-  },
+const CATEGORIES = [
+  { id: 1, name: "Promotions",  count: 183, color: "#F97316" },
+  { id: 2, name: "Newsletters", count: 94,  color: "#3B82F6" },
+  { id: 3, name: "Receipts",    count: 47,  color: "#EAB308" },
+  { id: 4, name: "Social",      count: 23,  color: "#06B6D4" },
+  { id: 5, name: "Updates",     count: 67,  color: "#8B5CF6" },
 ];
+
+const TOTAL_EMAILS = CATEGORIES.reduce((sum, c) => sum + c.count, 0);
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -66,13 +38,13 @@ export default function DeletionAnimation() {
     schedule(() => setPhase("selecting"), 800);
 
     // Phase 2 — tick checkboxes one by one
-    EMAILS.forEach((email, index) => {
+    CATEGORIES.forEach((cat, index) => {
       schedule(() => {
-        setCheckedIds((prev) => new Set([...prev, email.id]));
+        setCheckedIds((prev) => new Set([...prev, cat.id]));
       }, 1200 + index * 250);
     });
 
-    const allCheckedAt = 1200 + (EMAILS.length - 1) * 250;
+    const allCheckedAt = 1200 + (CATEGORIES.length - 1) * 250;
 
     // Phase 3 — confirming (button turns green)
     schedule(() => setPhase("confirming"), allCheckedAt + 200);
@@ -80,14 +52,14 @@ export default function DeletionAnimation() {
     // Phase 4 — deleting (rows slide out)
     schedule(() => {
       setPhase("deleting");
-      EMAILS.forEach((email, index) => {
+      CATEGORIES.forEach((cat, index) => {
         schedule(() => {
-          setDeletedIds((prev) => new Set([...prev, email.id]));
+          setDeletedIds((prev) => new Set([...prev, cat.id]));
         }, index * 120);
       });
     }, allCheckedAt + 900);
 
-    const allDeletedAt = allCheckedAt + 900 + (EMAILS.length - 1) * 120;
+    const allDeletedAt = allCheckedAt + 900 + (CATEGORIES.length - 1) * 120;
 
     // Phase 5 — done
     schedule(() => setPhase("done"), allDeletedAt + 300);
@@ -103,7 +75,7 @@ export default function DeletionAnimation() {
   }, [phase === "idle" ? "reset" : "running"]);
 
   // Derived state
-  const checkedCount = checkedIds.size;
+  const checkedCount = CATEGORIES.filter(c => checkedIds.has(c.id)).reduce((sum, c) => sum + c.count, 0);
   const isConfirming = phase === "confirming";
   const isDeleting = phase === "deleting";
   const isDone = phase === "done";
@@ -144,23 +116,23 @@ export default function DeletionAnimation() {
           Inbox
         </span>
         <span className="text-[10px] font-semibold text-white/30">
-          {checkedCount > 0 ? `${checkedCount} selected` : `${EMAILS.length} unread`}
+          {checkedCount > 0 ? `${checkedCount} selected` : `${TOTAL_EMAILS} emails`}
         </span>
       </div>
 
       {/* Thin divider */}
       <div className="mx-4 h-px bg-white/5" />
 
-      {/* Email list */}
-      <div className="flex-1 overflow-hidden px-3 pt-2 pb-1 flex flex-col gap-1">
-        {EMAILS.map((email) => {
-          const isChecked = checkedIds.has(email.id);
-          const isDeleted = deletedIds.has(email.id);
+      {/* Category list */}
+      <div className="flex-1 overflow-hidden px-3 pt-2 pb-1 flex flex-col gap-1.5">
+        {CATEGORIES.map((cat) => {
+          const isChecked = checkedIds.has(cat.id);
+          const isDeleted = deletedIds.has(cat.id);
 
           return (
             <div
-              key={email.id}
-              className="flex items-center gap-2 rounded-xl px-2 py-2 transition-all duration-300"
+              key={cat.id}
+              className="flex items-center gap-2.5 rounded-xl px-2.5 py-2"
               style={{
                 background: isChecked
                   ? "rgba(74,222,128,0.06)"
@@ -183,45 +155,39 @@ export default function DeletionAnimation() {
               <div
                 className="shrink-0 flex items-center justify-center rounded-full transition-all duration-200"
                 style={{
-                  width: 18,
-                  height: 18,
-                  border: isChecked
-                    ? "none"
-                    : "1.5px solid rgba(255,255,255,0.20)",
+                  width: 16,
+                  height: 16,
+                  border: isChecked ? "none" : "1.5px solid rgba(255,255,255,0.20)",
                   background: isChecked ? "#4ADE80" : "transparent",
-                  boxShadow: isChecked
-                    ? "0 0 8px rgba(74,222,128,0.4)"
-                    : "none",
+                  boxShadow: isChecked ? "0 0 8px rgba(74,222,128,0.4)" : "none",
                 }}
               >
                 {isChecked && (
-                  <Check
-                    size={10}
-                    strokeWidth={3}
-                    className="text-gray-900"
-                    aria-hidden="true"
-                  />
+                  <Check size={9} strokeWidth={3} className="text-gray-900" aria-hidden="true" />
                 )}
               </div>
 
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                {/* Tag + sender row */}
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span
-                    className={`shrink-0 rounded-full px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-white ${email.tagColor}`}
-                  >
-                    {email.tag}
-                  </span>
-                  <span className="truncate text-[10px] font-semibold text-white/70">
-                    {email.sender}
-                  </span>
-                </div>
-                {/* Subject */}
-                <p className="truncate text-[9px] text-white/35 leading-none">
-                  {email.subject}
-                </p>
-              </div>
+              {/* Category colour dot */}
+              <div
+                className="shrink-0 rounded-full"
+                style={{ width: 8, height: 8, background: cat.color }}
+              />
+
+              {/* Category name */}
+              <span className="flex-1 text-[11px] font-semibold text-white/80">
+                {cat.name}
+              </span>
+
+              {/* Email count */}
+              <span
+                className="shrink-0 rounded-full px-2 py-0.5 text-[9px] font-bold tabular-nums"
+                style={{
+                  background: isChecked ? "rgba(74,222,128,0.15)" : "rgba(255,255,255,0.07)",
+                  color: isChecked ? "#4ADE80" : "rgba(255,255,255,0.45)",
+                }}
+              >
+                {cat.count}
+              </span>
             </div>
           );
         })}

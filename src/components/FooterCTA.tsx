@@ -4,7 +4,7 @@ export default function FooterCTA() {
   return (
     <section
       className="py-24 px-6"
-      style={{ background: "#F7F6FF" }}
+      style={{ background: "#0F0A1E" }}
       aria-label="Final call to action"
     >
       <div className="mx-auto max-w-3xl">
@@ -19,10 +19,10 @@ export default function FooterCTA() {
           {/* Inner white card */}
           <div
             className="flex flex-col items-center text-center px-10 py-16 gap-6"
-            style={{ background: "#F7F6FF", borderRadius: "calc(1.25rem - 1px)" }}
+            style={{ background: "#160D2E", borderRadius: "calc(1.25rem - 1px)" }}
           >
             {/* Headline */}
-            <h2 className="font-black leading-[1.05] tracking-tight text-gray-900"
+            <h2 className="font-black leading-[1.05] tracking-tight text-white"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
               Your inbox won&apos;t{" "}
@@ -39,7 +39,7 @@ export default function FooterCTA() {
             </h2>
 
             {/* Subhead */}
-            <p className="text-base text-gray-500 lg:text-lg max-w-sm leading-relaxed">
+            <p className="text-base text-white/55 lg:text-lg max-w-sm leading-relaxed">
               Start with 500 emails free. No card required.
             </p>
 
