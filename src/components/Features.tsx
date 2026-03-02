@@ -1,0 +1,213 @@
+"use client";
+
+import {
+  BarChart2,
+  LayoutGrid,
+  Trash2,
+  BellOff,
+  FolderInput,
+  Globe,
+  type LucideIcon,
+} from "lucide-react";
+
+/* ─── Data ──────────────────────────────────────────────────────────────── */
+
+interface Feature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  comingSoon?: true;
+}
+
+const FEATURES: Feature[] = [
+  {
+    icon: BarChart2,
+    title: "Inbox Summary",
+    description:
+      "A clear breakdown of who's filling your inbox and exactly how bad it's got.",
+  },
+  {
+    icon: LayoutGrid,
+    title: "Smart Categorisation",
+    description:
+      "Automatically groups emails by type — newsletters, receipts, social, promotions.",
+  },
+  {
+    icon: Trash2,
+    title: "Mass Deletion",
+    description:
+      "Select a category and wipe hundreds of emails in one tap. Gone.",
+  },
+  {
+    icon: BellOff,
+    title: "Bulk Unsubscribe",
+    description:
+      "Unsubscribe from entire sender lists and delete their emails in one action.",
+  },
+  {
+    icon: FolderInput,
+    title: "Move & Archive",
+    description:
+      "Send emails to folders or archive in bulk — your structure, your rules.",
+  },
+  {
+    icon: Globe,
+    title: "Coming Soon: Web & iOS",
+    description:
+      "Already on Android. Browser and iPhone support is on the way.",
+    comingSoon: true,
+  },
+];
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+
+function FeatureCard({
+  feature,
+  index,
+}: {
+  feature: Feature;
+  index: number;
+}) {
+  const Icon = feature.icon;
+
+  const cardBase = [
+    "group relative flex flex-col gap-5 rounded-2xl p-6",
+    "transition-all duration-300 ease-out",
+    "feature-card",
+  ].join(" ");
+
+  const cardStyle = feature.comingSoon
+    ? {
+        border: "1.5px dashed #D1D5DB",
+        background: "#FAFAF9",
+        animationDelay: `${index * 80}ms`,
+      }
+    : {
+        border: "1.5px solid #F3F4F6",
+        background: "#FFFFFF",
+        animationDelay: `${index * 80}ms`,
+      };
+
+  return (
+    <div className={cardBase} style={cardStyle}>
+      {/* Coming Soon badge */}
+      {feature.comingSoon && (
+        <span
+          aria-label="Coming Soon"
+          className="absolute right-4 top-4 rounded-full bg-brand-purple/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-brand-purple"
+        >
+          Coming Soon
+        </span>
+      )}
+
+      {/* Icon chip */}
+      <div className="inline-flex w-fit items-center justify-center rounded-xl bg-brand-green/10 p-3">
+        <Icon
+          size={22}
+          strokeWidth={2}
+          className="text-brand-green"
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Text */}
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[15px] font-black tracking-tight text-gray-900">
+          {feature.title}
+        </h3>
+        <p className="text-sm leading-relaxed text-gray-500">
+          {feature.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────── */
+
+export default function Features() {
+  return (
+    <section
+      id="features"
+      className="relative overflow-hidden bg-white py-24 lg:py-32"
+    >
+      {/* Very subtle top-edge purple bloom so the section doesn't hard-cut from the dark hero */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.25) 50%, transparent 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        {/* ── Header ───────────────────────────────────────────────────── */}
+        <div
+          className="mx-auto mb-16 max-w-2xl text-center features-header"
+          style={{ animationDelay: "0ms" }}
+        >
+          {/* Eyebrow label */}
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-brand-purple">
+            What&rsquo;s inside
+          </p>
+
+          {/* Headline */}
+          <h2
+            className="mb-5 font-black leading-[1.05] tracking-tight text-gray-900"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)" }}
+          >
+            Everything your inbox needs.{" "}
+            <span className="text-brand-purple">Nothing it doesn&rsquo;t.</span>
+          </h2>
+
+          {/* Subheadline */}
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-gray-500">
+            Built for the people who&rsquo;ve been putting off inbox cleanup for
+            months. Or years.
+          </p>
+        </div>
+
+        {/* ── Grid ─────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURES.map((feature, i) => (
+            <FeatureCard key={feature.title} feature={feature} index={i} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Keyframes + hover styles ──────────────────────────────────── */}
+      <style>{`
+        /* Staggered fade-up entrance — same pattern as Hero */
+        @keyframes featureFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .features-header {
+          animation: featureFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .feature-card {
+          animation: featureFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        /* Hover: purple border glow + subtle lift */
+        .feature-card:hover {
+          border-color: #8B5CF6 !important;
+          box-shadow:
+            0 0 0 1px rgba(139, 92, 246, 0.15),
+            0 8px 32px rgba(139, 92, 246, 0.10),
+            0 2px 8px rgba(0, 0, 0, 0.06);
+          transform: translateY(-2px);
+        }
+      `}</style>
+    </section>
+  );
+}
