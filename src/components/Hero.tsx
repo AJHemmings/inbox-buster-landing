@@ -78,7 +78,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-green">
-              Now available on Android
+              Available on Android soon
             </span>
           </div>
 
@@ -135,7 +135,7 @@ export default function Hero() {
                   "0 0 0 1px rgba(74,222,128,0.3), 0 8px 32px rgba(74,222,128,0.30)",
               }}
             >
-              Get 500 Emails Free&nbsp;&rarr;
+              Join the Waiting List&nbsp;&rarr;
             </a>
 
             {/* Secondary CTA */}
@@ -147,12 +147,40 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* Trial info + first-100 bonus */}
+          <div
+            className="mb-6 flex flex-col gap-3"
+            style={{
+              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animationDelay: "320ms",
+            }}
+          >
+            {/* Trial perk */}
+            <p className="text-sm text-white/50">
+              ✉️ Free trial includes <span className="font-semibold text-white/75">500 emails</span> — no card required.
+            </p>
+
+            {/* First 100 bonus */}
+            <div
+              className="inline-flex items-center gap-2 self-start rounded-full border px-4 py-2"
+              style={{
+                background: "rgba(139,92,246,0.12)",
+                borderColor: "rgba(139,92,246,0.35)",
+              }}
+            >
+              <span>🎁</span>
+              <span className="text-xs font-bold text-brand-purple">
+                First 100 sign-ups get a surprise bonus
+              </span>
+            </div>
+          </div>
+
           {/* Stripe Climate note */}
           <p
             className="text-xs text-white/30"
             style={{
               animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
-              animationDelay: "320ms",
+              animationDelay: "400ms",
             }}
           >
             🌱 We contribute 1% of revenue to carbon removal via{" "}
