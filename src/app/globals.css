@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-brand-purple: #8B5CF6;
+  --color-brand-green: #4ADE80;
+  --color-brand-dark: #0F0A1E;
+  --color-brand-light: #F5F3FF;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --animate-marquee: marquee 30s linear infinite;
+}
+
 @layer base {
   body {
     @apply bg-white text-gray-900 antialiased;
