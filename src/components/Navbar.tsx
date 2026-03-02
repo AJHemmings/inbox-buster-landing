@@ -4,7 +4,7 @@ import { Zap } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
-  { label: "See It In Action", href: "#demo" },
+  { label: "See It In Action", href: "#action" },
   { label: "Pricing", href: "#pricing" },
 ];
 
