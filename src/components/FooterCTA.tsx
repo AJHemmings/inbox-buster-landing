@@ -3,7 +3,8 @@
 export default function FooterCTA() {
   return (
     <section
-      className="bg-white py-24 px-6"
+      className="py-24 px-6"
+      style={{ background: "#F7F6FF" }}
       aria-label="Final call to action"
     >
       <div className="mx-auto max-w-3xl">
@@ -17,8 +18,8 @@ export default function FooterCTA() {
         >
           {/* Inner white card */}
           <div
-            className="bg-white flex flex-col items-center text-center px-10 py-16 gap-6"
-            style={{ borderRadius: "calc(1.25rem - 1px)" }}
+            className="flex flex-col items-center text-center px-10 py-16 gap-6"
+            style={{ background: "#F7F6FF", borderRadius: "calc(1.25rem - 1px)" }}
           >
             {/* Headline */}
             <h2 className="font-black leading-[1.05] tracking-tight text-gray-900"

@@ -42,8 +42,8 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-/* Double the array for a seamless loop */
-const LOOP_ITEMS = [...TESTIMONIALS, ...TESTIMONIALS];
+/* Quadruple the array — ensures the strip is always wider than any viewport */
+const LOOP_ITEMS = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
 /* ─── Stars ──────────────────────────────────────────────────────────────── */
 
@@ -225,7 +225,7 @@ export default function SocialProof() {
       <style>{`
         @keyframes marquee {
           0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-25%); }
         }
 
         @keyframes spFadeUp {

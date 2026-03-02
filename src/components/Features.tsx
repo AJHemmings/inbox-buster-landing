@@ -78,12 +78,12 @@ function FeatureCard({
 
   const cardStyle = feature.comingSoon
     ? {
-        border: "1.5px dashed #D1D5DB",
-        background: "#FAFAF9",
+        border: "1.5px dashed #C4B5FD",
+        background: "#EDE9FE",
         animationDelay: `${index * 80}ms`,
       }
     : {
-        border: "1.5px solid #F3F4F6",
+        border: "1.5px solid #EDE9FE",
         background: "#FFFFFF",
         animationDelay: `${index * 80}ms`,
       };
@@ -129,7 +129,8 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative overflow-hidden bg-white py-24 lg:py-32"
+      className="relative overflow-hidden py-24 lg:py-32"
+      style={{ background: "#F7F6FF" }}
     >
       {/* Very subtle top-edge purple bloom so the section doesn't hard-cut from the dark hero */}
       <div
