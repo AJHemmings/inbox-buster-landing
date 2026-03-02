@@ -128,7 +128,7 @@ export default function Hero() {
           >
             {/* Primary CTA */}
             <a
-              href="#pricing"
+              href="/waitlist"
               className="inline-flex items-center rounded-full bg-brand-green px-7 py-3.5 text-sm font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
               style={{
                 boxShadow:
