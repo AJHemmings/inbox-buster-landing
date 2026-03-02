@@ -3,6 +3,8 @@ import Features from "@/components/Features";
 import InAction from "@/components/InAction";
 import Pricing from "@/components/Pricing";
 import SocialProof from "@/components/SocialProof";
+import FooterCTA from "@/components/FooterCTA";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <InAction />
       <Pricing />
       <SocialProof />
+      <FooterCTA />
+      <Footer />
     </main>
   );
 }
