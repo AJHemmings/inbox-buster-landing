@@ -184,7 +184,7 @@ export default function UnsubscribeAnimation() {
                     color: isStruck
                       ? "rgba(248,113,113,0.75)"
                       : "rgba(255,255,255,0.75)",
-                    textDecoration: isStruck ? "line-through" : "none",
+                    textDecorationLine: isStruck ? "line-through" : "none",
                     textDecorationColor: "rgba(239,68,68,0.7)",
                     textDecorationThickness: "1.5px",
                   }}
