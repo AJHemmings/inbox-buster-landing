@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Inbox Buster](public/readme-header.svg)
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+# ⚡ INBOX BUSTER
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Your inbox is a disaster. Let's fix that.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mass delete. Unsubscribe in bulk. Sort the chaos.
+Inbox Buster takes the job you've been putting off and finishes it in minutes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br/>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Android](https://img.shields.io/badge/Android-Available-8B5CF6?style=for-the-badge&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-Coming%20Soon-7C3AED?style=for-the-badge&logo=apple&logoColor=white)
+![Web](https://img.shields.io/badge/Web-Coming%20Soon-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white)
 
-## Learn More
+<br/>
 
-To learn more about Next.js, take a look at the following resources:
+[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](#)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+</div>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## See It In Action
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="public/eclean in action.jpg" alt="Mass Deletion — select a category, wipe hundreds of emails in one tap" width="100%"/>
+      <br/>
+      <sub><b>Mass Deletion</b></sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/eclean mass unsub.jpg" alt="Bulk Unsubscribe — unsubscribe from entire sender lists and delete in one action" width="100%"/>
+      <br/>
+      <sub><b>Bulk Unsubscribe</b></sub>
+    </td>
+  </tr>
+</table>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Features
+
+| | Feature | What it does |
+|---|---|---|
+| 🗂 | **Smart Categorisation** | Automatically groups emails by type — newsletters, receipts, social, promotions |
+| 🗑 | **Mass Deletion** | Select a category and wipe hundreds of emails in one tap |
+| 🔕 | **Bulk Unsubscribe** | Unsubscribe from entire sender lists and delete their emails in one action |
+| 📁 | **Move & Archive** | Send emails to folders or archive in bulk — your way, your structure |
+| 📊 | **Inbox Summary** | A clear breakdown of who's filling your inbox and how bad it really is |
+| 🌐 | **Web & iOS — Coming Soon** | Already on Android — browser and iPhone support on the way |
+
+---
+
+## Pricing
+
+Simple pricing. No surprises.
+
+| Plan | Price | What you get |
+|---|---|---|
+| **Free Trial** | Free | 500 emails cleaned, no card required |
+| **Monthly** | £X / month | Unlimited emails, full feature access |
+| **Annual** | £X / year | Best value — save X% vs monthly |
+
+🌱 1% of every subscription goes to carbon removal via [Stripe Climate](https://climate.stripe.com).
+
+---
+
+<div align="center">
+
+### Your inbox won't clean itself.
+
+[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](#)
+
+</div>
+
+---
+
+<div align="center">
+
+<sub>
+  <img src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js" alt="Next.js"/>
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/Lucide-8B5CF6?style=flat-square" alt="Lucide React"/>
+  <img src="https://img.shields.io/badge/Vercel-black?style=flat-square&logo=vercel" alt="Vercel"/>
+</sub>
+
+</div>
