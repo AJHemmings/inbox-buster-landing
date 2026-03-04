@@ -17,7 +17,7 @@ Inbox Buster takes the job you've been putting off and finishes it in minutes.
 
 <br/>
 
-[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](#)
+[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](https://inbox-buster-landing.vercel.app/waitlist)
 
 </div>
 
@@ -73,7 +73,7 @@ Simple pricing. No surprises.
 
 ### Your inbox won't clean itself.
 
-[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](#)
+[![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](https://inbox-buster-landing.vercel.app/waitlist)
 
 </div>
 
