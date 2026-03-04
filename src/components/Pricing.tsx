@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Check } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
@@ -33,7 +34,7 @@ const PLANS: Plan[] = [
       "Mass deletion",
       "Bulk unsubscribe",
     ],
-    cta: "Download Free →",
+    cta: "Join the Waitlist →",
     ctaStyle: "green",
     hero: false,
   },
@@ -50,7 +51,7 @@ const PLANS: Plan[] = [
       "Priority support",
       "Early access to new features",
     ],
-    cta: "Start Monthly →",
+    cta: "Join the Waitlist →",
     ctaStyle: "purple",
     hero: true,
   },
@@ -67,7 +68,7 @@ const PLANS: Plan[] = [
       "Priority support",
       "Early access to new features",
     ],
-    cta: "Go Annual →",
+    cta: "Join the Waitlist →",
     ctaStyle: "outline",
     hero: false,
   },
@@ -101,44 +102,40 @@ function CtaButton({
   label: string;
 }) {
   const base =
-    "w-full rounded-xl py-3.5 text-sm font-black uppercase tracking-wider transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2";
+    "block w-full rounded-xl py-3.5 text-center text-sm font-black uppercase tracking-wider transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2";
 
   if (style === "green") {
     return (
-      <button
-        type="button"
+      <Link
+        href="/waitlist"
         className={`${base} bg-brand-green text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
-        style={{
-          boxShadow: "0 4px 18px rgba(74,222,128,0.25)",
-        }}
+        style={{ boxShadow: "0 4px 18px rgba(74,222,128,0.25)" }}
       >
         {label}
-      </button>
+      </Link>
     );
   }
 
   if (style === "purple") {
     return (
-      <button
-        type="button"
+      <Link
+        href="/waitlist"
         className={`${base} bg-brand-purple text-white hover:brightness-110 hover:scale-[1.02] active:scale-100`}
-        style={{
-          boxShadow: "0 4px 18px rgba(139,92,246,0.30)",
-        }}
+        style={{ boxShadow: "0 4px 18px rgba(139,92,246,0.30)" }}
       >
         {label}
-      </button>
+      </Link>
     );
   }
 
   // outline
   return (
-    <button
-      type="button"
+    <Link
+      href="/waitlist"
       className={`${base} border-2 border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple/8 hover:scale-[1.02] active:scale-100`}
     >
       {label}
-    </button>
+    </Link>
   );
 }
 

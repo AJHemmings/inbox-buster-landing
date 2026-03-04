@@ -1,12 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export interface WaitlistEntry {
-  email: string;
-  source: string;
-  platforms: string[];
-  createdAt: string;
-}
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -36,27 +29,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const entry: WaitlistEntry = {
-      email: email.toLowerCase().trim(),
-      source,
-      platforms,
-      createdAt: new Date().toISOString(),
-    };
+    const cleanEmail = email.toLowerCase().trim();
 
-    // ── Database integration (TODO) ─────────────────────────────────
-    //
-    // Supabase example:
-    //
-    //   import { createClient } from "@supabase/supabase-js";
-    //   const supabase = createClient(
-    //     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    //     process.env.SUPABASE_SERVICE_ROLE_KEY!
-    //   );
-    //   const { error } = await supabase.from("waitlist").insert([entry]);
-    //   if (error) throw error;
-    //
-    // Until then, log entry to server console:
-    console.log("[Waitlist signup]", entry);
+    // ── Airtable ─────────────────────────────────────────────────────
+    const baseId = process.env.AIRTABLE_BASE_ID;
+    const tableName = encodeURIComponent("Waitlist Signups");
+
+    const airtableRes = await fetch(
+      `https://api.airtable.com/v0/${baseId}/${tableName}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fields: {
+            Email: cleanEmail,
+            Source: source,
+            Platforms: platforms.join(", "),
+            "Created At": new Date().toISOString(),
+          },
+        }),
+      }
+    );
+
+    if (!airtableRes.ok) {
+      const error = await airtableRes.json();
+      throw new Error(error.error?.message ?? "Airtable error");
+    }
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (err) {
