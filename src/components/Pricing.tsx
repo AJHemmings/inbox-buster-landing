@@ -197,7 +197,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       className={[
         "pricing-card relative flex flex-col rounded-2xl p-7",
         plan.hero
-          ? "md:-mt-4 md:mb-4 border-2 border-brand-purple"
+          ? "lg:-mt-4 lg:mb-4 border-2 border-brand-purple"
           : plan.id === "lifetime"
             ? "border border-amber-400/40"
             : "border border-white/8",
