@@ -18,13 +18,13 @@ const LAUNCH_PRICES = {
 interface Plan {
   id: string;
   badge: string;
-  badgeStyle: "gray" | "purple" | "green";
+  badgeStyle: "gray" | "purple" | "green" | "amber";
   price: string;
   period: string | null;
   description: string;
   features: string[];
   cta: string;
-  ctaStyle: "green" | "purple" | "outline";
+  ctaStyle: "green" | "purple" | "outline" | "amber";
   hero: boolean;
 }
 
@@ -93,6 +93,7 @@ function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
     gray: "bg-white/10 text-white/60",
     purple: "bg-brand-purple text-white",
     green: "bg-brand-green/15 text-brand-green",
+    amber: "bg-amber-400/15 text-amber-400",
   };
 
   return (
@@ -134,6 +135,17 @@ function CtaButton({
         href="/waitlist"
         className={`${base} bg-brand-purple text-white hover:brightness-110 hover:scale-[1.02] active:scale-100`}
         style={{ boxShadow: "0 4px 18px rgba(139,92,246,0.30)" }}
+      >
+        {label}
+      </Link>
+    );
+  }
+
+  if (style === "amber") {
+    return (
+      <Link
+        href="/waitlist"
+        className={`${base} bg-amber-400/15 text-amber-400 border border-amber-400/30 hover:bg-amber-400/25 hover:scale-[1.02] active:scale-100`}
       >
         {label}
       </Link>
