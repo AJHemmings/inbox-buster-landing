@@ -3,6 +3,18 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 
+/* ─── Launch prices (hidden until launch day) ────────────────────────────── */
+// To reveal on launch: replace plan `price` strings with these values
+// and restore the `period` fields below.
+const LAUNCH_PRICES = {
+  monthly: "£3",
+  annual: "£28",
+  lifetime: "£100",
+} as const;
+
+// Suppress unused-variable warning until launch day
+void LAUNCH_PRICES;
+
 /* ─── Types ──────────────────────────────────────────────────────────────── */
 
 interface Plan {
@@ -42,8 +54,8 @@ const PLANS: Plan[] = [
     id: "monthly",
     badge: "Most Popular",
     badgeStyle: "purple",
-    price: "£X",
-    period: "/ month",
+    price: "Pricing confirmed\nat launch",
+    period: null,
     description: "Full access. Cancel anytime.",
     features: [
       "Unlimited emails",
@@ -59,8 +71,8 @@ const PLANS: Plan[] = [
     id: "annual",
     badge: "Best value",
     badgeStyle: "green",
-    price: "£XX",
-    period: "/ year",
+    price: "Pricing confirmed\nat launch",
+    period: null,
     description: "Save compared to monthly.",
     features: [
       "Unlimited emails",
