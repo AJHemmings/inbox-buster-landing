@@ -143,8 +143,9 @@ function CtaButton({
 
   if (style === "amber") {
     return (
-      <div className="relative w-full rounded-xl" style={{ padding: "2px" }}>
+      <div className="relative w-full overflow-hidden rounded-xl" style={{ padding: "2px" }}>
         <div className="amber-shine-ring absolute inset-0 rounded-xl" />
+        {/* borderRadius: wrapper's rounded-xl (12px) minus 2px padding gap */}
         <Link
           href="/waitlist"
           className={`${base} bg-amber-400 text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
