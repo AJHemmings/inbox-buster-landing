@@ -6,14 +6,12 @@ import { Check } from "lucide-react";
 /* ─── Launch prices (hidden until launch day) ────────────────────────────── */
 // To reveal on launch: replace plan `price` strings with these values
 // and restore the `period` fields below.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LAUNCH_PRICES = {
   monthly: "£3",
   annual: "£28",
   lifetime: "£100",
 } as const;
-
-// Suppress unused-variable warning until launch day
-void LAUNCH_PRICES;
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
 
@@ -31,6 +29,8 @@ interface Plan {
 }
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
+
+const PLACEHOLDER_PRICE = "Pricing confirmed\nat launch";
 
 const PLANS: Plan[] = [
   {
@@ -54,7 +54,7 @@ const PLANS: Plan[] = [
     id: "monthly",
     badge: "Most Popular",
     badgeStyle: "purple",
-    price: "Pricing confirmed\nat launch",
+    price: PLACEHOLDER_PRICE,
     period: null,
     description: "Full access. Cancel anytime.",
     features: [
@@ -71,7 +71,7 @@ const PLANS: Plan[] = [
     id: "annual",
     badge: "Best value",
     badgeStyle: "green",
-    price: "Pricing confirmed\nat launch",
+    price: PLACEHOLDER_PRICE,
     period: null,
     description: "Save compared to monthly.",
     features: [
@@ -179,7 +179,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       <div className="mb-2 flex items-baseline gap-1">
         <span
           className="font-black tracking-tight text-white"
-          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1 }}
+          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1, whiteSpace: "pre-line" }}
         >
           {plan.price}
         </span>
