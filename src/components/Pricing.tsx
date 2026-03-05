@@ -143,12 +143,19 @@ function CtaButton({
 
   if (style === "amber") {
     return (
-      <Link
-        href="/waitlist"
-        className={`${base} bg-amber-400/15 text-amber-400 border border-amber-400/30 hover:bg-amber-400/25 hover:scale-[1.02] active:scale-100`}
-      >
-        {label}
-      </Link>
+      <div className="relative w-full rounded-xl" style={{ padding: "2px" }}>
+        <div className="amber-shine-ring absolute inset-0 rounded-xl" />
+        <Link
+          href="/waitlist"
+          className={`${base} bg-amber-400 text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
+          style={{
+            boxShadow: "0 4px 18px rgba(251,191,36,0.35)",
+            borderRadius: "10px",
+          }}
+        >
+          {label}
+        </Link>
+      </div>
     );
   }
 
@@ -367,6 +374,25 @@ export default function Pricing() {
           transform: translateY(-3px);
           transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
                       box-shadow 0.2s ease;
+        }
+
+        .amber-shine-ring {
+          background: conic-gradient(
+            from 0deg,
+            transparent 0%,
+            transparent 62%,
+            rgba(255, 255, 255, 0.4) 70%,
+            rgba(251, 191, 36, 0.9) 75%,
+            rgba(255, 255, 255, 0.4) 80%,
+            transparent 88%,
+            transparent 100%
+          );
+          animation: amberShineSpin 2.5s linear infinite;
+        }
+
+        @keyframes amberShineSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}</style>
     </section>
