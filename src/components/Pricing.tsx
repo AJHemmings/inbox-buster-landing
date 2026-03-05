@@ -351,22 +351,39 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* ── Stripe Climate callout ────────────────────────────────────── */}
-        <p
-          className="pricing-callout mx-auto mt-12 max-w-md text-center text-sm leading-relaxed text-white/40"
-          style={{ animationDelay: "350ms" }}
+        {/* ── Manifesto block ──────────────────────────────────────────── */}
+        <div
+          className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-8 py-7"
+          style={{
+            background: "rgba(74,222,128,0.04)",
+            borderLeft: "4px solid rgba(74,222,128,0.5)",
+            animationDelay: "350ms",
+          }}
         >
-          🌱 1% of every subscription goes to carbon removal via{" "}
-          <a
-            href="https://stripe.com/climate"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-white/55 underline underline-offset-2 decoration-white/20 transition-colors hover:text-brand-purple hover:decoration-brand-purple/40"
-          >
-            Stripe Climate
-          </a>
-          .
-        </p>
+          <p className="mb-1 text-base font-bold leading-relaxed text-white">
+            Software should be honest.
+          </p>
+          <p className="text-sm leading-relaxed text-white/70">
+            We charge what it costs to run — nothing more.
+            <br />
+            No upsell traps. No investor pressure.
+            <br />
+            Revenue keeps this app self-sufficient, and that&rsquo;s enough.
+          </p>
+
+          <p className="mt-5 text-sm leading-relaxed text-white/55">
+            🌱 1% of every payment goes to carbon removal via{" "}
+            <a
+              href="https://stripe.com/climate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white/70 underline underline-offset-2 decoration-white/20 transition-colors hover:text-brand-purple hover:decoration-brand-purple/40"
+            >
+              Stripe Climate
+            </a>
+            .
+          </p>
+        </div>
       </div>
 
       {/* ── Keyframes ─────────────────────────────────────────────────────── */}
