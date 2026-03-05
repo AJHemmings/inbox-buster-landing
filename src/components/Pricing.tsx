@@ -84,6 +84,24 @@ const PLANS: Plan[] = [
     ctaStyle: "outline",
     hero: false,
   },
+  {
+    id: "lifetime",
+    badge: "Own it forever",
+    badgeStyle: "amber",
+    price: PLACEHOLDER_PRICE,
+    period: null,
+    description: "Pay once. No renewals.",
+    features: [
+      "Unlimited emails",
+      "All features included",
+      "All future updates",
+      "Priority support",
+      "One payment. That's it.",
+    ],
+    cta: "Join the Waitlist →",
+    ctaStyle: "amber",
+    hero: false,
+  },
 ];
 
 /* ─── Badge ──────────────────────────────────────────────────────────────── */
@@ -180,10 +198,16 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
         "pricing-card relative flex flex-col rounded-2xl p-7",
         plan.hero
           ? "md:-mt-4 md:mb-4 border-2 border-brand-purple"
-          : "border border-white/8",
+          : plan.id === "lifetime"
+            ? "border border-amber-400/40"
+            : "border border-white/8",
       ].join(" ")}
       style={{
-        background: plan.hero ? "rgba(139,92,246,0.10)" : "rgba(255,255,255,0.04)",
+        background: plan.hero
+          ? "rgba(139,92,246,0.10)"
+          : plan.id === "lifetime"
+            ? "rgba(251,191,36,0.06)"
+            : "rgba(255,255,255,0.04)",
         animationDelay: `${index * 100}ms`,
         boxShadow: plan.hero
           ? "0 20px 60px rgba(139,92,246,0.20), 0 0 0 1px rgba(139,92,246,0.15)"
@@ -293,7 +317,7 @@ export default function Pricing() {
         }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div
@@ -321,7 +345,7 @@ export default function Pricing() {
         </div>
 
         {/* ── Cards grid ──────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:items-start">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
           {PLANS.map((plan, i) => (
             <PricingCard key={plan.id} plan={plan} index={i} />
           ))}
