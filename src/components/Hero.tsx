@@ -170,7 +170,7 @@ export default function Hero() {
             >
               <span>🎁</span>
               <span className="text-xs font-bold text-brand-purple">
-                First 100 sign-ups get a surprise bonus
+                First 100 sign-ups get their first year free
               </span>
             </div>
           </div>
