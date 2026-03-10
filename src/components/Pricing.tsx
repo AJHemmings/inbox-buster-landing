@@ -56,7 +56,7 @@ const PLANS: Plan[] = [
     badgeStyle: "purple",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Full access. Cancel anytime.",
+    description: "Covers the cost of running the app — hosting, infrastructure, and ongoing development. Nothing more.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -73,7 +73,7 @@ const PLANS: Plan[] = [
     badgeStyle: "green",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Save compared to monthly.",
+    description: "Covers running costs, plus a portion goes directly to supporting the developer.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -90,7 +90,7 @@ const PLANS: Plan[] = [
     badgeStyle: "amber",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Pay once. No renewals.",
+    description: "This one goes entirely to the developer. No running costs — just a direct vote of support.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -361,17 +361,20 @@ export default function Pricing() {
           }}
         >
           <p className="mb-1 text-base font-bold leading-relaxed text-white">
-            Software should be honest.
+            Honest pricing. Open books.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            We charge what it costs to run — nothing more.
-            <br />
-            No upsell traps. No investor pressure.
-            <br />
-            Revenue keeps this app self-sufficient, and that&rsquo;s enough.
+            Monthly covers what it actually costs to keep this running — hosting, infrastructure, and active development.
+            Yearly goes a step further: running costs covered, with a portion directly supporting the developer.
+            Lifetime skips the running costs entirely — it&rsquo;s purely a way to back the person building this.
           </p>
 
-          <p className="mt-5 text-sm leading-relaxed text-white/55">
+          <p className="mt-4 text-sm leading-relaxed text-white/55">
+            No investor pressure. No upsell traps. We&rsquo;ll always be transparent about how your money is used —
+            and when we hit growth milestones, you&rsquo;ll hear about it.
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-white/55">
             🌱 1% of every payment goes to carbon removal via{" "}
             <a
               href="https://stripe.com/climate"
@@ -381,7 +384,7 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            .
+            . As we hit subscriber milestones, that percentage goes up — and we&rsquo;ll announce every increase publicly.
           </p>
         </div>
       </div>
