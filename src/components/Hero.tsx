@@ -157,7 +157,7 @@ export default function Hero() {
           >
             {/* Trial perk */}
             <p className="text-sm text-white/50">
-              ✉️ Free trial includes <span className="font-semibold text-white/75">500 emails</span> — no card required.
+              ✉️ Free trial includes <span className="font-semibold text-white/75">500 emails</span>. No card required.
             </p>
 
             {/* First 100 bonus */}

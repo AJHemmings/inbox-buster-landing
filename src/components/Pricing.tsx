@@ -56,7 +56,7 @@ const PLANS: Plan[] = [
     badgeStyle: "purple",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Covers the cost of running the app — hosting, infrastructure, and ongoing development. Nothing more.",
+    description: "Covers the cost of running the app: hosting, infrastructure, and ongoing development. Nothing more.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -73,7 +73,7 @@ const PLANS: Plan[] = [
     badgeStyle: "green",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Covers running costs, plus a portion goes directly to supporting the developer.",
+    description: "Covers running costs. Every penny goes straight back into improving the app.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -90,7 +90,7 @@ const PLANS: Plan[] = [
     badgeStyle: "amber",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "This one goes entirely to the developer. No running costs — just a direct vote of support.",
+    description: "This one goes entirely to the developer. No running costs. Just a direct vote of support for the person building this.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -364,14 +364,14 @@ export default function Pricing() {
             Honest pricing. Open books.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            Monthly covers what it actually costs to keep this running — hosting, infrastructure, and active development.
-            Yearly goes a step further: running costs covered, with a portion directly supporting the developer.
-            Lifetime skips the running costs entirely — it&rsquo;s purely a way to back the person building this.
+            Monthly covers what it actually costs to keep this running: hosting, infrastructure, and active development.
+            Yearly covers running costs and everything goes straight back into improving the app.
+            Lifetime skips the running costs entirely. It&rsquo;s purely a way to back the person building this.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
-            No investor pressure. No upsell traps. We&rsquo;ll always be transparent about how your money is used —
-            and when we hit growth milestones, you&rsquo;ll hear about it.
+            No investor pressure. No upsell traps. We&rsquo;ll always be transparent about how your money is used.
+            When we hit growth milestones, you&rsquo;ll hear about it.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
@@ -384,7 +384,7 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            . As we hit subscriber milestones, that percentage goes up — and we&rsquo;ll announce every increase publicly.
+            . As we hit subscriber milestones, that percentage goes up and we&rsquo;ll announce every increase publicly.
           </p>
         </div>
       </div>

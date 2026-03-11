@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Inbox Buster — Clean Your Inbox in Minutes",
+  title: "Inbox Buster: Clean Your Inbox in Minutes",
   description:
-    "Mass delete emails, bulk unsubscribe, and sort your inbox chaos. Inbox Buster for Android. Start free — clear 500 emails with no card required.",
+    "Mass delete emails, bulk unsubscribe, and sort your inbox chaos. Inbox Buster for Android. Start free. Clear 500 emails with no card required.",
   openGraph: {
-    title: "Inbox Buster — Clean Your Inbox in Minutes",
+    title: "Inbox Buster: Clean Your Inbox in Minutes",
     description:
-      "Mass delete emails, bulk unsubscribe, and sort your inbox chaos. Start free — 500 emails, no card required.",
+      "Mass delete emails, bulk unsubscribe, and sort your inbox chaos. Start free. 500 emails, no card required.",
     type: "website",
   },
 };

@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Stripe Climate note — left */}
           <p className="text-xs text-white/30">
-            🌱 Stripe Climate member — 1% to carbon removal
+            🌱 Stripe Climate member. 1% to carbon removal.
           </p>
 
           {/* Copyright — right */}

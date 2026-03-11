@@ -30,7 +30,7 @@ const FEATURES: Feature[] = [
     icon: LayoutGrid,
     title: "Smart Categorisation",
     description:
-      "Automatically groups emails by type — newsletters, receipts, social, promotions.",
+      "Automatically groups emails by type: newsletters, receipts, social, promotions.",
   },
   {
     icon: Trash2,
@@ -48,7 +48,7 @@ const FEATURES: Feature[] = [
     icon: FolderInput,
     title: "Move & Archive",
     description:
-      "Send emails to folders or archive in bulk — your structure, your rules.",
+      "Send emails to folders or archive in bulk. Your structure, your rules.",
   },
   {
     icon: Globe,
