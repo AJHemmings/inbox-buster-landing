@@ -57,10 +57,8 @@ export default function Hero() {
 
       {/* ── Content ───────────────────────────────────────────────────── */}
       <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center px-6 pb-16 lg:flex-row lg:items-center lg:gap-12 lg:px-8">
-
         {/* ── Left: Text column ─────────────────────────────────────── */}
         <div className="flex flex-col items-start pt-12 lg:pt-0 lg:w-[55%]">
-
           {/* Badge */}
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/10 px-4 py-1.5"
@@ -73,12 +71,14 @@ export default function Hero() {
             <span className="relative flex h-2 w-2 shrink-0">
               <span
                 className="absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"
-                style={{ animation: "ping 1.4s cubic-bezier(0,0,0.2,1) infinite" }}
+                style={{
+                  animation: "ping 1.4s cubic-bezier(0,0,0.2,1) infinite",
+                }}
               />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-green">
-              Available on Android soon
+              Available on Android, iOS & Web soon
             </span>
           </div>
 
@@ -114,8 +114,8 @@ export default function Hero() {
               animationDelay: "160ms",
             }}
           >
-            Mass delete. Unsubscribe in bulk. Sort the chaos. Inbox Buster
-            takes the job you&apos;ve been putting off and finishes it in minutes.
+            Mass delete. Unsubscribe in bulk. Sort the chaos. Inbox Buster takes
+            the job you&apos;ve been putting off and finishes it in minutes.
           </p>
 
           {/* CTA buttons */}
@@ -157,7 +157,9 @@ export default function Hero() {
           >
             {/* Trial perk */}
             <p className="text-sm text-white/50">
-              ✉️ Free trial includes <span className="font-semibold text-white/75">500 emails</span>. No card required.
+              ✉️ Free trial includes{" "}
+              <span className="font-semibold text-white/75">500 emails</span>.
+              No card required.
             </p>
 
             {/* First 100 bonus */}
