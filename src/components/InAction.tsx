@@ -3,16 +3,12 @@
 import DeletionAnimation from "@/components/DeletionAnimation";
 import UnsubscribeAnimation from "@/components/UnsubscribeAnimation";
 
-/* ─── Types ──────────────────────────────────────────────────────────────── */
-
 interface MockupColumn {
   animation: React.ReactNode;
   glowClass: string;
   title: string;
   subtitle: string;
 }
-
-/* ─── Data ───────────────────────────────────────────────────────────────── */
 
 const MOCKUPS: MockupColumn[] = [
   {
@@ -29,16 +25,12 @@ const MOCKUPS: MockupColumn[] = [
   },
 ];
 
-/* ─── Component ──────────────────────────────────────────────────────────── */
-
 export default function InAction() {
   return (
     <section
       id="action"
-      className="relative overflow-hidden py-28 lg:py-36"
-      style={{ background: "#0F0A1E" }}
+      className="relative overflow-hidden py-28 lg:py-36 bg-brand-dark"
     >
-      {/* ── Top edge — gradient bridge from white Features section ──────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
@@ -48,7 +40,6 @@ export default function InAction() {
         }}
       />
 
-      {/* ── Ambient radial bloom — sits behind everything ────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -58,7 +49,6 @@ export default function InAction() {
         }}
       />
 
-      {/* ── Subtle noise grain overlay ────────────────────────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -70,15 +60,11 @@ export default function InAction() {
       />
 
       <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
-
-        {/* ── Header ──────────────────────────────────────────────────────── */}
         <div className="mb-20 text-center inaction-header">
-          {/* Eyebrow */}
           <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-brand-green/70">
             See it in action
           </p>
 
-          {/* Headline */}
           <h2
             className="mb-4 font-black leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
@@ -87,7 +73,6 @@ export default function InAction() {
             <span className="text-gradient-purple-green">disappear.</span>
           </h2>
 
-          {/* Subheadline */}
           <p
             className="mx-auto max-w-sm text-base font-medium leading-relaxed"
             style={{ color: "rgba(255,255,255,0.42)" }}
@@ -96,7 +81,6 @@ export default function InAction() {
           </p>
         </div>
 
-        {/* ── Mockup grid ─────────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-12 lg:gap-20">
           {MOCKUPS.map((col, i) => (
             <div
@@ -104,22 +88,15 @@ export default function InAction() {
               className="flex flex-col items-center inaction-mockup"
               style={{ animationDelay: `${i * 120}ms` }}
             >
-              {/* Phone + glow wrapper */}
               <div className="relative">
-                {/* Glow disc — sits behind the phone */}
                 <div
                   aria-hidden="true"
                   className={`absolute inset-0 -z-10 rounded-full blur-3xl ${col.glowClass}`}
-                  style={{
-                    transform: "scale(1.35) translateY(8%)",
-                  }}
+                  style={{ transform: "scale(1.35) translateY(8%)" }}
                 />
-
-                {/* Phone mockup */}
                 {col.animation}
               </div>
 
-              {/* Label — below the phone */}
               <div className="mt-8 text-center">
                 <p className="mb-1 text-[15px] font-black tracking-tight text-white">
                   {col.title}
@@ -135,43 +112,6 @@ export default function InAction() {
           ))}
         </div>
       </div>
-
-      {/* ── Keyframes + glow utilities ──────────────────────────────────────── */}
-      <style>{`
-        /* Staggered fade-up entrance */
-        @keyframes inactionFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(28px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .inaction-header {
-          animation: inactionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-          animation-delay: 0ms;
-        }
-
-        .inaction-mockup {
-          animation: inactionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        /* Glow disc colours — kept out of Tailwind arbitrary values for clarity */
-        .glow-purple {
-          background: rgba(139, 92, 246, 0.20);
-          width: 100%;
-          height: 100%;
-        }
-
-        .glow-red {
-          background: rgba(239, 68, 68, 0.20);
-          width: 100%;
-          height: 100%;
-        }
-      `}</style>
     </section>
   );
 }

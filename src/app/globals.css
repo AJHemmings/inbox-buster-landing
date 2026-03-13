@@ -5,9 +5,9 @@
   --color-brand-purple: #8B5CF6;
   --color-brand-green: #4ADE80;
   --color-brand-dark: #0F0A1E;
+  --color-brand-mid: #1A1035;
   --color-brand-light: #F5F3FF;
   --font-sans: "Inter", system-ui, sans-serif;
-  --animate-marquee: marquee 30s linear infinite;
 }
 
 @layer base {
@@ -24,7 +24,94 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .bg-hero-glow {
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.25) 0%, transparent 70%);
-  }
+}
+
+/* ── Shared keyframes ──────────────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+@keyframes amberShineSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Entrance animations ───────────────────────────────────────────────────── */
+
+.fade-up,
+.pricing-header,
+.pricing-card,
+.pricing-callout,
+.features-header,
+.feature-card,
+.sp-header,
+.inaction-header,
+.inaction-mockup {
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Marquee ───────────────────────────────────────────────────────────────── */
+
+.marquee-strip {
+  animation: marquee 30s linear infinite;
+}
+.marquee-strip:hover {
+  animation-play-state: paused;
+}
+
+/* ── Card hover states ─────────────────────────────────────────────────────── */
+
+.feature-card:hover {
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  background: rgba(139, 92, 246, 0.08) !important;
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.20), 0 8px 32px rgba(139, 92, 246, 0.12);
+  transform: translateY(-2px);
+}
+
+.pricing-card:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.testimonial-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(74, 222, 128, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(74, 222, 128, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Amber shine ring (Lifetime plan CTA) ──────────────────────────────────── */
+
+.amber-shine-ring {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%, transparent 62%,
+    rgba(255, 255, 255, 0.4) 70%,
+    rgba(251, 191, 36, 0.9) 75%,
+    rgba(255, 255, 255, 0.4) 80%,
+    transparent 88%, transparent 100%
+  );
+  animation: amberShineSpin 2.5s linear infinite;
+}
+
+/* ── Glow discs (InAction section) ────────────────────────────────────────── */
+
+.glow-purple {
+  background: rgba(139, 92, 246, 0.20);
+  width: 100%;
+  height: 100%;
+}
+.glow-red {
+  background: rgba(239, 68, 68, 0.20);
+  width: 100%;
+  height: 100%;
 }

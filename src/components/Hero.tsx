@@ -8,9 +8,6 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden bg-brand-dark pt-20"
       aria-label="Hero"
     >
-      {/* ── Background atmosphere ─────────────────────────────────────── */}
-
-      {/* Large primary purple bloom — upper-left */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute"
@@ -25,7 +22,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Secondary green accent bloom — bottom-right */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute"
@@ -40,7 +36,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Subtle grid overlay for texture */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -55,25 +50,19 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Content ───────────────────────────────────────────────────── */}
       <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center px-6 pb-16 lg:flex-row lg:items-center lg:gap-12 lg:px-8">
-        {/* ── Left: Text column ─────────────────────────────────────── */}
         <div className="flex flex-col items-start pt-12 lg:pt-0 lg:w-[55%]">
-          {/* Badge */}
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/10 px-4 py-1.5"
             style={{
-              animation: "heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "0ms",
             }}
           >
-            {/* Pulsing green dot */}
             <span className="relative flex h-2 w-2 shrink-0">
               <span
                 className="absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"
-                style={{
-                  animation: "ping 1.4s cubic-bezier(0,0,0.2,1) infinite",
-                }}
+                style={{ animation: "ping 1.4s cubic-bezier(0,0,0.2,1) infinite" }}
               />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
             </span>
@@ -82,12 +71,11 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Headline */}
           <h1
             className="mb-6 font-black leading-[1.0] tracking-tight"
             style={{
               fontSize: "clamp(2.75rem, 6.5vw, 5.25rem)",
-              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "80ms",
             }}
           >
@@ -106,11 +94,10 @@ export default function Hero() {
             <span className="block text-white">Let&apos;s fix that.</span>
           </h1>
 
-          {/* Subheadline */}
           <p
             className="mb-10 max-w-[520px] text-base leading-relaxed text-white/60 lg:text-lg"
             style={{
-              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "160ms",
             }}
           >
@@ -118,15 +105,13 @@ export default function Hero() {
             the job you&apos;ve been putting off and finishes it in minutes.
           </p>
 
-          {/* CTA buttons */}
           <div
             className="mb-8 flex flex-wrap items-center gap-4"
             style={{
-              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "240ms",
             }}
           >
-            {/* Primary CTA */}
             <a
               href="/waitlist"
               className="inline-flex items-center rounded-full bg-brand-green px-7 py-3.5 text-sm font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
@@ -138,7 +123,6 @@ export default function Hero() {
               Join the Waiting List&nbsp;&rarr;
             </a>
 
-            {/* Secondary CTA */}
             <a
               href="#action"
               className="inline-flex items-center rounded-full border border-brand-purple/60 px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white/80 transition-all duration-200 hover:border-brand-purple hover:text-white hover:bg-brand-purple/10"
@@ -147,22 +131,19 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trial info + first-100 bonus */}
           <div
             className="mb-6 flex flex-col gap-3"
             style={{
-              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "320ms",
             }}
           >
-            {/* Trial perk */}
             <p className="text-sm text-white/50">
               ✉️ Free trial includes{" "}
               <span className="font-semibold text-white/75">500 emails</span>.
               No card required.
             </p>
 
-            {/* First 100 bonus */}
             <div
               className="inline-flex items-center gap-2 self-start rounded-full border px-4 py-2"
               style={{
@@ -177,11 +158,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Stripe Climate note */}
           <p
             className="text-xs text-white/30"
             style={{
-              animation: "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+              animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
               animationDelay: "400ms",
             }}
           >
@@ -190,15 +170,13 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* ── Right: Phone mockup column ────────────────────────────── */}
         <div
           className="relative mt-16 flex w-full items-center justify-center lg:mt-0 lg:w-[45%]"
           style={{
-            animation: "heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both",
+            animation: "fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both",
             animationDelay: "200ms",
           }}
         >
-          {/* Glow ring behind the phone */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute"
@@ -212,7 +190,6 @@ export default function Hero() {
             }}
           />
 
-          {/* Secondary green rim glow */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute"
@@ -226,7 +203,6 @@ export default function Hero() {
             }}
           />
 
-          {/* Phone — sits above glows via z-index */}
           <div
             className="relative z-10"
             style={{
@@ -239,23 +215,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Keyframe definitions ──────────────────────────────────────── */}
       <style>{`
-        @keyframes heroFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(28px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
         @keyframes ping {
-          75%, 100% {
-            transform: scale(2);
-            opacity: 0;
-          }
+          75%, 100% { transform: scale(2); opacity: 0; }
         }
       `}</style>
     </section>

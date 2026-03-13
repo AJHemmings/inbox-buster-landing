@@ -2,13 +2,8 @@
 
 export default function FooterCTA() {
   return (
-    <section
-      className="py-24 px-6"
-      style={{ background: "#0F0A1E" }}
-      aria-label="Final call to action"
-    >
+    <section className="py-24 px-6 bg-brand-dark" aria-label="Final call to action">
       <div className="mx-auto max-w-3xl">
-        {/* Gradient-border card: outer div provides the gradient "border" via 1px padding */}
         <div
           style={{
             background: "linear-gradient(135deg, #8B5CF6, #4ADE80)",
@@ -16,13 +11,12 @@ export default function FooterCTA() {
             borderRadius: "1.25rem",
           }}
         >
-          {/* Inner white card */}
           <div
             className="flex flex-col items-center text-center px-10 py-16 gap-6"
             style={{ background: "#160D2E", borderRadius: "calc(1.25rem - 1px)" }}
           >
-            {/* Headline */}
-            <h2 className="font-black leading-[1.05] tracking-tight text-white"
+            <h2
+              className="font-black leading-[1.05] tracking-tight text-white"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
               Your inbox won&apos;t{" "}
@@ -38,12 +32,10 @@ export default function FooterCTA() {
               </span>
             </h2>
 
-            {/* Subhead */}
             <p className="text-base text-white/55 lg:text-lg max-w-sm leading-relaxed">
               Start with 500 emails free. No card required.
             </p>
 
-            {/* CTA button */}
             <a
               href="#pricing"
               className="inline-flex items-center rounded-full bg-brand-green px-8 py-4 text-base font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"

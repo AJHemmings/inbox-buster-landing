@@ -3,17 +3,13 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 
-/* ─── Launch prices (hidden until launch day) ────────────────────────────── */
-// To reveal on launch: replace plan `price` strings with these values
-// and restore the `period` fields below.
+// To reveal at launch: replace each plan's `price` with LAUNCH_PRICES values and restore `period` fields.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LAUNCH_PRICES = {
   monthly: "£3",
   annual: "£28",
   lifetime: "£100",
 } as const;
-
-/* ─── Types ──────────────────────────────────────────────────────────────── */
 
 interface Plan {
   id: string;
@@ -27,8 +23,6 @@ interface Plan {
   ctaStyle: "green" | "purple" | "outline" | "amber";
   hero: boolean;
 }
-
-/* ─── Data ───────────────────────────────────────────────────────────────── */
 
 const PLACEHOLDER_PRICE = "Pricing confirmed\nat launch";
 
@@ -56,7 +50,8 @@ const PLANS: Plan[] = [
     badgeStyle: "purple",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Covers the cost of running the app: hosting, infrastructure, and ongoing development. Nothing more.",
+    description:
+      "Covers the cost of running the app: hosting, infrastructure, and ongoing development. Nothing more.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -73,7 +68,8 @@ const PLANS: Plan[] = [
     badgeStyle: "green",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "Covers running costs. Every penny goes straight back into improving the app.",
+    description:
+      "Covers running costs. Every penny goes straight back into improving the app.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -90,7 +86,8 @@ const PLANS: Plan[] = [
     badgeStyle: "amber",
     price: PLACEHOLDER_PRICE,
     period: null,
-    description: "This one goes entirely to the developer. No running costs. Just a direct vote of support for the person building this.",
+    description:
+      "This one goes entirely to the developer. No running costs. Just a direct vote of support for the person building this.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -103,8 +100,6 @@ const PLANS: Plan[] = [
     hero: false,
   },
 ];
-
-/* ─── Badge ──────────────────────────────────────────────────────────────── */
 
 function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
   const classes: Record<Plan["badgeStyle"], string> = {
@@ -123,15 +118,7 @@ function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
   );
 }
 
-/* ─── CTA Button ─────────────────────────────────────────────────────────── */
-
-function CtaButton({
-  style,
-  label,
-}: {
-  style: Plan["ctaStyle"];
-  label: string;
-}) {
+function CtaButton({ style, label }: { style: Plan["ctaStyle"]; label: string }) {
   const base =
     "block w-full rounded-xl py-3.5 text-center text-sm font-black uppercase tracking-wider transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2";
 
@@ -163,14 +150,10 @@ function CtaButton({
     return (
       <div className="relative w-full overflow-hidden rounded-xl" style={{ padding: "2px" }}>
         <div className="amber-shine-ring absolute inset-0 rounded-xl" />
-        {/* borderRadius: wrapper's rounded-xl (12px) minus 2px padding gap */}
         <Link
           href="/waitlist"
           className={`${base} bg-amber-400 text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
-          style={{
-            boxShadow: "0 4px 18px rgba(251,191,36,0.35)",
-            borderRadius: "10px",
-          }}
+          style={{ boxShadow: "0 4px 18px rgba(251,191,36,0.35)", borderRadius: "10px" }}
         >
           {label}
         </Link>
@@ -178,7 +161,6 @@ function CtaButton({
     );
   }
 
-  // outline
   return (
     <Link
       href="/waitlist"
@@ -188,8 +170,6 @@ function CtaButton({
     </Link>
   );
 }
-
-/* ─── Pricing Card ───────────────────────────────────────────────────────── */
 
 function PricingCard({ plan, index }: { plan: Plan; index: number }) {
   return (
@@ -214,12 +194,10 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
           : "none",
       }}
     >
-      {/* Badge */}
       <div className="mb-5">
         <Badge style={plan.badgeStyle} label={plan.badge} />
       </div>
 
-      {/* Price row */}
       <div className="mb-2 flex items-baseline gap-1">
         <span
           className="font-black tracking-tight text-white"
@@ -232,12 +210,8 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
         )}
       </div>
 
-      {/* Description */}
-      <p className="mb-6 text-sm leading-relaxed text-white/55">
-        {plan.description}
-      </p>
+      <p className="mb-6 text-sm leading-relaxed text-white/55">{plan.description}</p>
 
-      {/* Divider */}
       <div
         className="mb-6 h-px w-full"
         style={{
@@ -247,24 +221,17 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
         }}
       />
 
-      {/* Feature list */}
       <ul className="mb-8 flex flex-col gap-3">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-center gap-3">
             <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/12">
-              <Check
-                size={11}
-                strokeWidth={3}
-                className="text-brand-green"
-                aria-hidden="true"
-              />
+              <Check size={11} strokeWidth={3} className="text-brand-green" aria-hidden="true" />
             </span>
             <span className="text-sm font-medium text-white/75">{feature}</span>
           </li>
         ))}
       </ul>
 
-      {/* CTA — pinned to bottom */}
       <div className="mt-auto">
         <CtaButton style={plan.ctaStyle} label={plan.cta} />
       </div>
@@ -272,16 +239,12 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
   );
 }
 
-/* ─── Section ────────────────────────────────────────────────────────────── */
-
 export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden py-24 lg:py-32"
-      style={{ background: "#1A1035" }}
+      className="relative overflow-hidden py-24 lg:py-32 bg-brand-mid"
     >
-      {/* ── Top edge — gradient bridge from the dark InAction section above ── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
@@ -291,7 +254,6 @@ export default function Pricing() {
         }}
       />
 
-      {/* ── Ambient purple radial bloom — top centre ──────────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0"
@@ -302,7 +264,6 @@ export default function Pricing() {
         }}
       />
 
-      {/* ── Very faint dot-grid texture ──────────────────────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -318,18 +279,14 @@ export default function Pricing() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
-        {/* ── Header ──────────────────────────────────────────────────────── */}
         <div
           className="pricing-header mx-auto mb-14 max-w-xl text-center"
           style={{ animationDelay: "0ms" }}
         >
-          {/* Eyebrow */}
           <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-brand-purple">
             Pricing
           </p>
 
-          {/* Headline */}
           <h2
             className="mb-4 font-black leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(1.9rem, 4.5vw, 3rem)" }}
@@ -338,20 +295,17 @@ export default function Pricing() {
             <span className="text-brand-purple">No surprises.</span>
           </h2>
 
-          {/* Subheadline */}
           <p className="text-base leading-relaxed text-white/50">
             Start free. Upgrade when you&rsquo;re ready.
           </p>
         </div>
 
-        {/* ── Cards grid ──────────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
           {PLANS.map((plan, i) => (
             <PricingCard key={plan.id} plan={plan} index={i} />
           ))}
         </div>
 
-        {/* ── Manifesto block ──────────────────────────────────────────── */}
         <div
           className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-8 py-7"
           style={{
@@ -388,58 +342,6 @@ export default function Pricing() {
           </p>
         </div>
       </div>
-
-      {/* ── Keyframes ─────────────────────────────────────────────────────── */}
-      <style>{`
-        @keyframes pricingFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .pricing-header {
-          animation: pricingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        .pricing-card {
-          animation: pricingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        .pricing-callout {
-          animation: pricingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        /* Standard card hover — subtle lift + purple border hint */
-        .pricing-card:hover {
-          transform: translateY(-3px);
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.2s ease;
-        }
-
-        .amber-shine-ring {
-          background: conic-gradient(
-            from 0deg,
-            transparent 0%,
-            transparent 62%,
-            rgba(255, 255, 255, 0.4) 70%,
-            rgba(251, 191, 36, 0.9) 75%,
-            rgba(255, 255, 255, 0.4) 80%,
-            transparent 88%,
-            transparent 100%
-          );
-          animation: amberShineSpin 2.5s linear infinite;
-        }
-
-        @keyframes amberShineSpin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </section>
   );
 }
