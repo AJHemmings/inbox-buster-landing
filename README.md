@@ -9,13 +9,9 @@
 Mass delete. Unsubscribe in bulk. Sort the chaos.
 Inbox Buster takes the job you've been putting off and finishes it in minutes.
 
-<br/>
-
 ![Android](https://img.shields.io/badge/Android-Available-8B5CF6?style=for-the-badge&logo=android&logoColor=white)
 ![iOS](https://img.shields.io/badge/iOS-Coming%20Soon-7C3AED?style=for-the-badge&logo=apple&logoColor=white)
 ![Web](https://img.shields.io/badge/Web-Coming%20Soon-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white)
-
-<br/>
 
 [![Join the Waitlist](https://img.shields.io/badge/Join%20the%20Waitlist%20%E2%86%92-4ADE80?style=for-the-badge&logoColor=black)](https://inbox-buster-landing.vercel.app/waitlist)
 
@@ -28,12 +24,12 @@ Inbox Buster takes the job you've been putting off and finishes it in minutes.
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="public/eclean in action.jpg" alt="Mass Deletion — select a category, wipe hundreds of emails in one tap" width="100%"/>
+      <img src="public/eclean-in-action.jpg" alt="Mass Deletion — select a category, wipe hundreds of emails in one tap" width="100%"/>
       <br/>
       <sub><b>Mass Deletion</b></sub>
     </td>
     <td align="center" width="50%">
-      <img src="public/eclean mass unsub.jpg" alt="Bulk Unsubscribe — unsubscribe from entire sender lists and delete in one action" width="100%"/>
+      <img src="public/eclean-mass-unsub.jpg" alt="Bulk Unsubscribe — unsubscribe from entire sender lists and delete in one action" width="100%"/>
       <br/>
       <sub><b>Bulk Unsubscribe</b></sub>
     </td>
