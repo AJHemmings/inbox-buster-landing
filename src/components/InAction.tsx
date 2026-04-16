@@ -5,7 +5,6 @@ import UnsubscribeAnimation from "@/components/UnsubscribeAnimation";
 
 interface MockupColumn {
   animation: React.ReactNode;
-  glowClass: string;
   title: string;
   subtitle: string;
 }
@@ -13,13 +12,11 @@ interface MockupColumn {
 const MOCKUPS: MockupColumn[] = [
   {
     animation: <DeletionAnimation />,
-    glowClass: "glow-purple",
     title: "Mass Deletion",
     subtitle: "Select a category. One tap. Done.",
   },
   {
     animation: <UnsubscribeAnimation />,
-    glowClass: "glow-red",
     title: "Unsubscribe & Delete",
     subtitle: "Cuts the sender off and cleans up after them.",
   },
@@ -88,12 +85,10 @@ export default function InAction() {
               className="flex flex-col items-center inaction-mockup"
               style={{ animationDelay: `${i * 120}ms` }}
             >
-              <div className="relative">
-                <div
-                  aria-hidden="true"
-                  className={`absolute inset-0 -z-10 rounded-full blur-3xl ${col.glowClass}`}
-                  style={{ transform: "scale(1.35) translateY(8%)" }}
-                />
+              <div
+                className="relative"
+                style={{ filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.6))" }}
+              >
                 {col.animation}
               </div>
 
