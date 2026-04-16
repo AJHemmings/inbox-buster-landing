@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, BellOff } from "lucide-react";
 import PhoneShell, { HomeIndicator } from "@/components/PhoneShell";
 
 const SENDERS = [
@@ -72,7 +71,7 @@ export default function UnsubscribeAnimation() {
         <span
           className="text-[10px] font-semibold transition-colors duration-300"
           style={{
-            color: isRemoving || isDone ? "rgba(248,113,113,0.8)" : "rgba(255,255,255,0.30)",
+            color: isRemoving || isDone ? "rgba(249,115,22,0.8)" : "rgba(255,255,255,0.30)",
           }}
         >
           {isDone
@@ -93,10 +92,12 @@ export default function UnsubscribeAnimation() {
           return (
             <div
               key={sender.id}
-              className="flex items-center gap-2.5 rounded-xl px-2.5 py-2"
+              className="flex items-center gap-2 rounded-[10px] px-2.5 py-2"
               style={{
-                background: isStruck ? "rgba(239,68,68,0.06)" : "rgba(255,255,255,0.03)",
-                border: isStruck ? "1px solid rgba(239,68,68,0.18)" : "1px solid rgba(255,255,255,0.05)",
+                background: isStruck ? "rgba(249,115,22,0.08)" : "#1e1e2a",
+                border: isStruck
+                  ? "1px solid rgba(249,115,22,0.18)"
+                  : "1px solid rgba(255,255,255,0.04)",
                 opacity: isDissolved ? 0 : 1,
                 transform: isDissolved ? "translateX(32px) scale(0.95)" : "translateX(0) scale(1)",
                 transitionProperty: "opacity, transform, background, border",
@@ -104,51 +105,45 @@ export default function UnsubscribeAnimation() {
                 transitionTimingFunction: isDissolved ? "cubic-bezier(0.4, 0, 1, 1)" : "ease",
               }}
             >
+              {/* Letter avatar */}
               <div
-                className="shrink-0 flex items-center justify-center rounded-lg text-[9px] font-bold"
+                className="shrink-0 flex items-center justify-center rounded-[6px] text-[9px] font-bold transition-all duration-200"
                 style={{
                   width: 22,
                   height: 22,
-                  background: isStruck ? "rgba(239,68,68,0.15)" : "rgba(255,255,255,0.06)",
-                  color: isStruck ? "rgba(248,113,113,0.8)" : "rgba(255,255,255,0.35)",
-                  transition: "background 220ms ease, color 220ms ease",
+                  background: isStruck ? "rgba(249,115,22,0.12)" : "#2a2a38",
+                  color: isStruck ? "rgba(249,115,22,0.8)" : "rgba(255,255,255,0.55)",
                 }}
               >
                 {sender.name.charAt(0)}
               </div>
 
+              {/* Stacked name + count — name retains strikethrough when struck */}
               <div className="flex-1 min-w-0">
-                <span
-                  className="block text-[11px] font-semibold leading-tight transition-all duration-200"
+                <p
+                  className="text-[11px] font-semibold leading-tight transition-all duration-200"
                   style={{
-                    color: isStruck ? "rgba(248,113,113,0.75)" : "rgba(255,255,255,0.75)",
+                    color: isStruck ? "rgba(249,115,22,0.9)" : "rgba(255,255,255,0.85)",
                     textDecorationLine: isStruck ? "line-through" : "none",
-                    textDecorationColor: "rgba(239,68,68,0.7)",
+                    textDecorationColor: "rgba(249,115,22,0.7)",
                     textDecorationThickness: "1.5px",
                   }}
                 >
                   {sender.name}
-                </span>
-                <span
+                </p>
+                <p
                   className="text-[9px] transition-colors duration-200"
-                  style={{ color: isStruck ? "rgba(239,68,68,0.45)" : "rgba(255,255,255,0.25)" }}
+                  style={{ color: isStruck ? "rgba(249,115,22,0.45)" : "rgba(255,255,255,0.30)" }}
                 >
-                  {sender.count} emails
-                </span>
-              </div>
-
-              <div
-                className="shrink-0 transition-all duration-200"
-                style={{ opacity: isStruck ? 1 : 0, transform: isStruck ? "scale(1)" : "scale(0.7)" }}
-              >
-                <BellOff size={11} strokeWidth={2} style={{ color: "rgba(248,113,113,0.65)" }} aria-hidden="true" />
+                  {sender.count.toLocaleString()} emails
+                </p>
               </div>
             </div>
           );
         })}
       </div>
 
-      <div className="px-3 pb-5 pt-1">
+      <div className="px-3 pb-5 pt-2">
         <div
           className="mb-2 px-2 text-center transition-all duration-300"
           style={{
@@ -156,11 +151,11 @@ export default function UnsubscribeAnimation() {
             transform: showCounter ? "translateY(0)" : "translateY(4px)",
           }}
         >
-          <span className="text-[9px] font-medium tracking-wide" style={{ color: "rgba(248,113,113,0.7)" }}>
+          <span className="text-[9px] font-medium tracking-wide" style={{ color: "rgba(249,115,22,0.7)" }}>
             Deleted {deletedEmailCount} emails
           </span>
           <span className="text-[9px] mx-1.5" style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
-          <span className="text-[9px] font-medium tracking-wide" style={{ color: "rgba(248,113,113,0.5)" }}>
+          <span className="text-[9px] font-medium tracking-wide" style={{ color: "rgba(249,115,22,0.5)" }}>
             Unsubscribed from {removedSenderCount}
           </span>
         </div>
@@ -179,7 +174,7 @@ export default function UnsubscribeAnimation() {
                 className="flex items-center justify-center rounded-full shrink-0"
                 style={{ width: 16, height: 16, background: "#4ADE80", boxShadow: "0 0 8px rgba(74,222,128,0.5)" }}
               >
-                <Check size={9} strokeWidth={3} className="text-gray-900" aria-hidden="true" />
+                <span style={{ fontSize: 9, color: "#000", fontWeight: 900 }}>✓</span>
               </div>
               <span className="text-[11px] font-bold tracking-wide" style={{ color: "#4ADE80" }}>Done</span>
             </div>
@@ -191,21 +186,32 @@ export default function UnsubscribeAnimation() {
             </span>
           </div>
         ) : (
-          <button
-            disabled
-            aria-label="Unsubscribe and delete all emails from selected senders"
-            className="w-full flex items-center justify-center gap-2 rounded-xl py-3 text-[10px] font-bold tracking-widest uppercase transition-all duration-300"
-            style={
-              isRemoving
-                ? { background: "rgba(239,68,68,0.35)", color: "rgba(255,255,255,0.60)", border: "1px solid rgba(239,68,68,0.20)" }
-                : isConfirming
-                ? { background: "rgb(239,68,68)", color: "rgba(255,255,255,1)", border: "1px solid rgba(239,68,68,0.50)", transform: "scale(1.05)", boxShadow: "0 4px 24px rgba(239,68,68,0.35)" }
-                : { background: "rgba(255,255,255,0.04)", color: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.07)" }
-            }
-          >
-            {!isRemoving && <BellOff size={11} strokeWidth={2.5} aria-hidden="true" />}
-            {isRemoving ? "Removing..." : "Unsubscribe & Delete All"}
-          </button>
+          <div className="flex gap-2">
+            {/* DELETE — always disabled */}
+            <button
+              disabled
+              aria-disabled
+              className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase"
+              style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.20)", border: "1px solid rgba(255,255,255,0.07)", pointerEvents: "none" }}
+            >
+              🗑 Delete
+            </button>
+
+            {/* UNSUB & DELETE — active */}
+            <button
+              disabled
+              className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase transition-all duration-300"
+              style={
+                isRemoving
+                  ? { background: "rgba(249,115,22,0.35)", color: "rgba(255,255,255,0.60)", border: "1px solid rgba(249,115,22,0.20)" }
+                  : isConfirming
+                  ? { background: "#F97316", color: "#fff", border: "none" }
+                  : { background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.08)" }
+              }
+            >
+              🔕 {isRemoving ? "Removing..." : "Unsub & Delete"}
+            </button>
+          </div>
         )}
 
         <HomeIndicator />
