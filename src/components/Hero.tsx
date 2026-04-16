@@ -1,6 +1,6 @@
 "use client";
 
-import UnsubscribeAnimation from "@/components/UnsubscribeAnimation";
+import InboxHealthAnimation from "@/components/InboxHealthAnimation";
 
 export default function Hero() {
   return (
@@ -8,34 +8,6 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden bg-brand-dark pt-20"
       aria-label="Hero"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute"
-        style={{
-          top: "-10%",
-          left: "-15%",
-          width: "70vw",
-          height: "70vw",
-          background:
-            "radial-gradient(ellipse at center, rgba(139,92,246,0.22) 0%, rgba(139,92,246,0.06) 45%, transparent 70%)",
-          filter: "blur(2px)",
-        }}
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute"
-        style={{
-          bottom: "-5%",
-          right: "-10%",
-          width: "40vw",
-          height: "40vw",
-          background:
-            "radial-gradient(ellipse at center, rgba(74,222,128,0.10) 0%, transparent 65%)",
-          filter: "blur(1px)",
-        }}
-      />
-
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -185,7 +157,7 @@ export default function Hero() {
               height: 380,
               borderRadius: "50%",
               background:
-                "radial-gradient(ellipse at center, rgba(139,92,246,0.35) 0%, rgba(139,92,246,0.12) 40%, transparent 72%)",
+                "radial-gradient(ellipse at center, rgba(139,92,246,0.12) 0%, rgba(139,92,246,0.05) 40%, transparent 72%)",
               filter: "blur(24px)",
             }}
           />
@@ -198,7 +170,7 @@ export default function Hero() {
               height: 280,
               borderRadius: "50%",
               background:
-                "radial-gradient(ellipse at 60% 70%, rgba(74,222,128,0.15) 0%, transparent 65%)",
+                "radial-gradient(ellipse at 60% 70%, rgba(74,222,128,0.07) 0%, transparent 65%)",
               filter: "blur(16px)",
             }}
           />
@@ -207,10 +179,10 @@ export default function Hero() {
             className="relative z-10"
             style={{
               filter:
-                "drop-shadow(0 40px 80px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(139,92,246,0.25))",
+                "drop-shadow(0 40px 80px rgba(0,0,0,0.75))",
             }}
           >
-            <UnsubscribeAnimation />
+            <InboxHealthAnimation />
           </div>
         </div>
       </div>
