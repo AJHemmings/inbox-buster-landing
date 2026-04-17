@@ -102,16 +102,8 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative overflow-hidden py-24 lg:py-32 bg-brand-mid"
+      className="relative overflow-hidden py-24 lg:py-32 bg-brand-dark"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.25) 50%, transparent 100%)",
-        }}
-      />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div
