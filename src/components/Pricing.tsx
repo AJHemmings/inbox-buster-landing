@@ -3,28 +3,18 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 
-// To reveal at launch: replace each plan's `price` with LAUNCH_PRICES values and restore `period` fields.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const LAUNCH_PRICES = {
-  monthly: "£3",
-  annual: "£28",
-  lifetime: "£100",
-} as const;
-
 interface Plan {
   id: string;
   badge: string;
-  badgeStyle: "gray" | "purple" | "green" | "amber";
+  badgeStyle: "gray" | "purple" | "green";
   price: string;
   period: string | null;
   description: string;
   features: string[];
   cta: string;
-  ctaStyle: "green" | "purple" | "outline" | "amber";
+  ctaStyle: "green" | "purple" | "outline";
   hero: boolean;
 }
-
-const PLACEHOLDER_PRICE = "Pricing confirmed\nat launch";
 
 const PLANS: Plan[] = [
   {
@@ -33,9 +23,9 @@ const PLANS: Plan[] = [
     badgeStyle: "gray",
     price: "Free",
     period: null,
-    description: "Clear your first 500 emails. No card required.",
+    description: "Clean your first 1,000 emails. No card required.",
     features: [
-      "500 email clean-up",
+      "1,000 email clean-up",
       "Smart categorisation",
       "Mass deletion",
       "Bulk unsubscribe",
@@ -45,49 +35,13 @@ const PLANS: Plan[] = [
     hero: false,
   },
   {
-    id: "monthly",
-    badge: "Most Popular",
-    badgeStyle: "purple",
-    price: PLACEHOLDER_PRICE,
-    period: null,
-    description:
-      "Covers the cost of running the app: hosting, infrastructure, and ongoing development. Nothing more.",
-    features: [
-      "Unlimited emails",
-      "All features included",
-      "Priority support",
-      "Early access to new features",
-    ],
-    cta: "Join the Waitlist →",
-    ctaStyle: "purple",
-    hero: true,
-  },
-  {
-    id: "annual",
-    badge: "Best value",
-    badgeStyle: "green",
-    price: PLACEHOLDER_PRICE,
-    period: null,
-    description:
-      "Covers running costs. Every penny goes straight back into improving the app.",
-    features: [
-      "Unlimited emails",
-      "All features included",
-      "Priority support",
-      "Early access to new features",
-    ],
-    cta: "Join the Waitlist →",
-    ctaStyle: "outline",
-    hero: false,
-  },
-  {
     id: "lifetime",
     badge: "Own it forever",
-    badgeStyle: "amber",
-    price: PLACEHOLDER_PRICE,
-    period: null,
+    badgeStyle: "purple",
+    price: "£4.99",
+    period: "one-time",
     description:
-      "This one goes entirely to the developer. No running costs. Just a direct vote of support for the person building this.",
+      "Less than a coffee. Pay once, clean your inbox forever. All features, all future updates.",
     features: [
       "Unlimited emails",
       "All features included",
@@ -96,7 +50,25 @@ const PLANS: Plan[] = [
       "One payment. That's it.",
     ],
     cta: "Join the Waitlist →",
-    ctaStyle: "amber",
+    ctaStyle: "purple",
+    hero: true,
+  },
+  {
+    id: "supporter",
+    badge: "Support the dev",
+    badgeStyle: "green",
+    price: "£2.50",
+    period: "/month",
+    description:
+      "Not for features — this is for people who want to actively back ongoing development. Every penny goes straight into the app.",
+    features: [
+      "Unlimited emails",
+      "All features included",
+      "Early access to new features",
+      "Priority support",
+    ],
+    cta: "Join the Waitlist →",
+    ctaStyle: "outline",
     hero: false,
   },
 ];
@@ -106,7 +78,6 @@ function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
     gray: "bg-white/10 text-white/60",
     purple: "bg-brand-purple text-white",
     green: "bg-brand-green/15 text-brand-green",
-    amber: "bg-amber-400/15 text-amber-400",
   };
 
   return (
@@ -146,21 +117,6 @@ function CtaButton({ style, label }: { style: Plan["ctaStyle"]; label: string })
     );
   }
 
-  if (style === "amber") {
-    return (
-      <div className="relative w-full overflow-hidden rounded-xl" style={{ padding: "2px" }}>
-        <div className="amber-shine-ring absolute inset-0 rounded-xl" />
-        <Link
-          href="/waitlist"
-          className={`${base} bg-amber-400 text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
-          style={{ boxShadow: "0 4px 18px rgba(251,191,36,0.35)", borderRadius: "10px" }}
-        >
-          {label}
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <Link
       href="/waitlist"
@@ -177,17 +133,13 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       className={[
         "pricing-card relative flex flex-col rounded-2xl p-7",
         plan.hero
-          ? "lg:-mt-4 lg:mb-4 border-2 border-brand-purple"
-          : plan.id === "lifetime"
-            ? "border border-amber-400/40"
-            : "border border-white/8",
+          ? "md:-mt-4 md:mb-4 border-2 border-brand-purple"
+          : "border border-white/8",
       ].join(" ")}
       style={{
         background: plan.hero
           ? "rgba(139,92,246,0.10)"
-          : plan.id === "lifetime"
-            ? "rgba(251,191,36,0.06)"
-            : "rgba(255,255,255,0.04)",
+          : "rgba(255,255,255,0.04)",
         animationDelay: `${index * 100}ms`,
         boxShadow: plan.hero
           ? "0 20px 60px rgba(139,92,246,0.20), 0 0 0 1px rgba(139,92,246,0.15)"
@@ -243,41 +195,8 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden py-24 lg:py-32 bg-brand-mid"
+      className="relative overflow-hidden py-24 lg:py-32 bg-brand-dark"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.30) 35%, rgba(74,222,128,0.15) 65%, transparent 100%)",
-        }}
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0"
-        style={{
-          height: "50%",
-          background:
-            "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(139,92,246,0.07) 0%, transparent 70%)",
-        }}
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(139,92,246,0.09) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-          maskImage:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 80%)",
-        }}
-      />
-
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div
           className="pricing-header mx-auto mb-14 max-w-xl text-center"
@@ -300,7 +219,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-start">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:items-start">
           {PLANS.map((plan, i) => (
             <PricingCard key={plan.id} plan={plan} index={i} />
           ))}
@@ -318,14 +237,13 @@ export default function Pricing() {
             Honest pricing. Open books.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            Monthly covers what it actually costs to keep this running: hosting, infrastructure, and active development.
-            Yearly covers running costs and everything goes straight back into improving the app.
-            Lifetime skips the running costs entirely. It&rsquo;s purely a way to back the person building this.
+            £4.99 unlocks everything, permanently — no subscriptions, no renewals.
+            The £2.50/month option isn&rsquo;t a different feature tier. It&rsquo;s for people who want to
+            actively support ongoing development. Every penny goes straight back into the app.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
             No investor pressure. No upsell traps. We&rsquo;ll always be transparent about how your money is used.
-            When we hit growth milestones, you&rsquo;ll hear about it.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
@@ -338,7 +256,7 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            . As we hit subscriber milestones, that percentage goes up and we&rsquo;ll announce every increase publicly.
+            . As we grow, that percentage goes up — and we&rsquo;ll announce every increase publicly.
           </p>
         </div>
       </div>
