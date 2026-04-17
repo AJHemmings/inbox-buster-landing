@@ -38,6 +38,11 @@
   100% { transform: translateX(-25%); }
 }
 
+@keyframes dotWave {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
 @keyframes amberShineSpin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
