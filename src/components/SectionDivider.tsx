@@ -7,7 +7,7 @@ const DOTS = Array.from({ length: 200 }, (_, i) => ({
 export default function SectionDivider() {
   return (
     <div
-      className="w-full overflow-hidden bg-brand-dark py-1 flex justify-center gap-1.5 flex-nowrap"
+      className="w-full overflow-hidden bg-brand-dark py-1 flex justify-center gap-1.5 flex-wrap"
       aria-hidden="true"
     >
       {DOTS.map(({ key, color, delay }) => (
