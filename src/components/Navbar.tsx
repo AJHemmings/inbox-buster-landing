@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Zap } from "lucide-react";
 
 const NAV_LINKS = [
@@ -12,13 +13,23 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-brand-dark/75 backdrop-blur-lg">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <a href="/" className="flex items-center gap-2 select-none" aria-label="Inbox Buster home">
-          <Zap size={22} className="text-brand-green" fill="currentColor" strokeWidth={0} aria-hidden="true" />
+        <Link
+          href="/"
+          className="flex items-center gap-2 select-none"
+          aria-label="Inbox Buster home"
+        >
+          <Zap
+            size={22}
+            className="text-brand-green"
+            fill="currentColor"
+            strokeWidth={0}
+            aria-hidden="true"
+          />
           <span className="text-xl font-black uppercase tracking-widest leading-none">
             <span className="text-white">INBOX</span>
             <span className="text-brand-green">BUSTER</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-8" role="list">
           {NAV_LINKS.map(({ label, href }) => (

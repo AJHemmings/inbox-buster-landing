@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import PhoneShell, { HomeIndicator } from "@/components/PhoneShell";
 
 const SENDERS = [
-  { id: 1, name: "Credit Karma",    count: 2345 },
+  { id: 1, name: "Credit Karma", count: 2345 },
   { id: 2, name: "LinkedIn Alerts", count: 1392 },
-  { id: 3, name: "Twitch",          count: 535  },
-  { id: 4, name: "eBay Auctions",   count: 463  },
-  { id: 5, name: "PlayStation",     count: 388  },
+  { id: 3, name: "Twitch", count: 535 },
+  { id: 4, name: "eBay Auctions", count: 463 },
+  { id: 5, name: "PlayStation", count: 388 },
 ];
-
-const TOTAL_EMAILS = SENDERS.reduce((sum, s) => sum + s.count, 0);
 
 type Phase = "idle" | "selecting" | "confirming" | "deleting" | "done";
 
@@ -21,42 +19,60 @@ export default function DeletionAnimation() {
   const [deletedIds, setDeletedIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    let timeouts: ReturnType<typeof setTimeout>[] = [];
     const schedule = (fn: () => void, delay: number) => {
-      timeouts.push(setTimeout(fn, delay));
+      const id = setTimeout(() => {
+        fn();
+        timeouts = timeouts.filter((timeoutId) => timeoutId !== id);
+      }, delay);
+      timeouts.push(id);
     };
 
-    schedule(() => setPhase("selecting"), 800);
+    const runCycle = () => {
+      schedule(() => setPhase("selecting"), 800);
 
-    SENDERS.forEach((sender, index) => {
-      schedule(() => setCheckedIds((prev) => new Set([...prev, sender.id])), 1200 + index * 250);
-    });
-
-    const allCheckedAt = 1200 + (SENDERS.length - 1) * 250;
-
-    schedule(() => setPhase("confirming"), allCheckedAt + 200);
-
-    schedule(() => {
-      setPhase("deleting");
       SENDERS.forEach((sender, index) => {
-        schedule(() => setDeletedIds((prev) => new Set([...prev, sender.id])), index * 120);
+        schedule(
+          () => setCheckedIds((prev) => new Set([...prev, sender.id])),
+          1200 + index * 250,
+        );
       });
-    }, allCheckedAt + 900);
 
-    const allDeletedAt = allCheckedAt + 900 + (SENDERS.length - 1) * 120;
+      const allCheckedAt = 1200 + (SENDERS.length - 1) * 250;
 
-    schedule(() => setPhase("done"), allDeletedAt + 300);
+      schedule(() => setPhase("confirming"), allCheckedAt + 200);
 
-    schedule(() => {
-      setPhase("idle");
-      setCheckedIds(new Set());
-      setDeletedIds(new Set());
-    }, allDeletedAt + 2300);
+      schedule(() => {
+        setPhase("deleting");
+        SENDERS.forEach((sender, index) => {
+          schedule(
+            () => setDeletedIds((prev) => new Set([...prev, sender.id])),
+            index * 120,
+          );
+        });
+      }, allCheckedAt + 900);
+
+      const allDeletedAt = allCheckedAt + 900 + (SENDERS.length - 1) * 120;
+
+      schedule(() => setPhase("done"), allDeletedAt + 300);
+
+      schedule(() => {
+        setPhase("idle");
+        setCheckedIds(new Set());
+        setDeletedIds(new Set());
+        runCycle();
+      }, allDeletedAt + 2300);
+    };
+
+    runCycle();
 
     return () => timeouts.forEach(clearTimeout);
-  }, [phase === "idle" ? "reset" : "running"]);
+  }, []);
 
-  const checkedCount = SENDERS.filter(s => checkedIds.has(s.id)).reduce((sum, s) => sum + s.count, 0);
+  const checkedCount = SENDERS.filter((s) => checkedIds.has(s.id)).reduce(
+    (sum, s) => sum + s.count,
+    0,
+  );
   const isConfirming = phase === "confirming";
   const isDeleting = phase === "deleting";
   const isDone = phase === "done";
@@ -64,9 +80,13 @@ export default function DeletionAnimation() {
   return (
     <PhoneShell>
       <div className="flex items-center justify-between px-5 pt-4 pb-1">
-        <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase">Inbox</span>
+        <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase">
+          Inbox
+        </span>
         <span className="text-[10px] font-semibold text-white/30">
-          {checkedCount > 0 ? `${checkedCount} selected` : `${SENDERS.length} senders`}
+          {checkedCount > 0
+            ? `${checkedCount} selected`
+            : `${SENDERS.length} senders`}
         </span>
       </div>
 
@@ -87,10 +107,14 @@ export default function DeletionAnimation() {
                   ? "1px solid rgba(74,222,128,0.18)"
                   : "1px solid rgba(255,255,255,0.04)",
                 opacity: isDeleted ? 0 : 1,
-                transform: isDeleted ? "translateX(32px) scale(0.95)" : "translateX(0) scale(1)",
+                transform: isDeleted
+                  ? "translateX(32px) scale(0.95)"
+                  : "translateX(0) scale(1)",
                 transitionProperty: "opacity, transform, background, border",
                 transitionDuration: isDeleted ? "280ms" : "200ms",
-                transitionTimingFunction: isDeleted ? "cubic-bezier(0.4, 0, 1, 1)" : "ease",
+                transitionTimingFunction: isDeleted
+                  ? "cubic-bezier(0.4, 0, 1, 1)"
+                  : "ease",
               }}
             >
               {/* Circular checkbox */}
@@ -99,12 +123,16 @@ export default function DeletionAnimation() {
                 style={{
                   width: 16,
                   height: 16,
-                  border: isChecked ? "none" : "1.5px solid rgba(255,255,255,0.22)",
+                  border: isChecked
+                    ? "none"
+                    : "1.5px solid rgba(255,255,255,0.22)",
                   background: isChecked ? "#4ADE80" : "transparent",
                 }}
               >
                 {isChecked && (
-                  <span style={{ fontSize: 8, color: "#000", fontWeight: 900 }}>✓</span>
+                  <span style={{ fontSize: 8, color: "#000", fontWeight: 900 }}>
+                    ✓
+                  </span>
                 )}
               </div>
 
@@ -115,7 +143,9 @@ export default function DeletionAnimation() {
                   width: 22,
                   height: 22,
                   background: isChecked ? "rgba(74,222,128,0.12)" : "#2a2a38",
-                  color: isChecked ? "rgba(74,222,128,0.8)" : "rgba(255,255,255,0.55)",
+                  color: isChecked
+                    ? "rgba(74,222,128,0.8)"
+                    : "rgba(255,255,255,0.55)",
                 }}
               >
                 {sender.name.charAt(0)}
@@ -125,13 +155,21 @@ export default function DeletionAnimation() {
               <div className="flex-1 min-w-0">
                 <p
                   className="text-[11px] font-semibold leading-tight transition-colors duration-200"
-                  style={{ color: isChecked ? "rgba(74,222,128,0.9)" : "rgba(255,255,255,0.85)" }}
+                  style={{
+                    color: isChecked
+                      ? "rgba(74,222,128,0.9)"
+                      : "rgba(255,255,255,0.85)",
+                  }}
                 >
                   {sender.name}
                 </p>
                 <p
                   className="text-[9px] transition-colors duration-200"
-                  style={{ color: isChecked ? "rgba(74,222,128,0.45)" : "rgba(255,255,255,0.30)" }}
+                  style={{
+                    color: isChecked
+                      ? "rgba(74,222,128,0.45)"
+                      : "rgba(255,255,255,0.30)",
+                  }}
                 >
                   {sender.count.toLocaleString()} emails
                 </p>
@@ -153,11 +191,21 @@ export default function DeletionAnimation() {
           >
             <div
               className="flex items-center justify-center rounded-full"
-              style={{ width: 20, height: 20, background: "#4ADE80", boxShadow: "0 0 10px rgba(74,222,128,0.5)" }}
+              style={{
+                width: 20,
+                height: 20,
+                background: "#4ADE80",
+                boxShadow: "0 0 10px rgba(74,222,128,0.5)",
+              }}
             >
-              <span style={{ fontSize: 9, color: "#000", fontWeight: 900 }}>✓</span>
+              <span style={{ fontSize: 9, color: "#000", fontWeight: 900 }}>
+                ✓
+              </span>
             </div>
-            <span className="text-xs font-bold tracking-wide" style={{ color: "#4ADE80" }}>
+            <span
+              className="text-xs font-bold tracking-wide"
+              style={{ color: "#4ADE80" }}
+            >
               Inbox cleared
             </span>
           </div>
@@ -169,10 +217,22 @@ export default function DeletionAnimation() {
               className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase transition-all duration-300"
               style={
                 isDeleting
-                  ? { background: "rgba(74,222,128,0.35)", color: "rgba(255,255,255,0.60)", border: "1px solid rgba(74,222,128,0.20)" }
+                  ? {
+                      background: "rgba(74,222,128,0.35)",
+                      color: "rgba(255,255,255,0.60)",
+                      border: "1px solid rgba(74,222,128,0.20)",
+                    }
                   : isConfirming
-                  ? { background: "#4ADE80", color: "#0a0a12", border: "none" }
-                  : { background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.08)" }
+                    ? {
+                        background: "#4ADE80",
+                        color: "#0a0a12",
+                        border: "none",
+                      }
+                    : {
+                        background: "rgba(255,255,255,0.05)",
+                        color: "rgba(255,255,255,0.25)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }
               }
             >
               🗑 {isDeleting ? "Deleting..." : "Delete"}
@@ -183,7 +243,12 @@ export default function DeletionAnimation() {
               disabled
               aria-disabled
               className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase"
-              style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.20)", border: "1px solid rgba(255,255,255,0.07)", pointerEvents: "none" }}
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                color: "rgba(255,255,255,0.20)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                pointerEvents: "none",
+              }}
             >
               🔕 Unsub &amp; Delete
             </button>

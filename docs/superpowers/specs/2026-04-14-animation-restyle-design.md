@@ -29,9 +29,11 @@ The mismatch makes the landing page feel fake. The fix is to restyle the animati
 
 **Background:** `#1a1a2e` → `#16161f` (neutral deep dark, matches real app)
 **Box shadow:** Remove purple/white tint from shadow layers. Use clean dark shadow only:
+
 ```
 0 32px 80px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.06)
 ```
+
 Note: the `inset 0 1px 0 rgba(255,255,255,0.08)` top-edge highlight from the current shadow is intentionally removed.
 **Border:** Keep at `1px solid rgba(255,255,255,0.10)` — no change needed.
 
@@ -69,6 +71,7 @@ Note: the `inset 0 1px 0 rgba(255,255,255,0.08)` top-edge highlight from the cur
 ```
 
 **Category row colours:**
+
 - Newsletter: `#3B82F6` (blue)
 - Personal: `#4ADE80` (green)
 - Promotions: `#F97316` (orange)
@@ -76,6 +79,7 @@ Note: the `inset 0 1px 0 rgba(255,255,255,0.08)` top-edge highlight from the cur
 - Social: `#06B6D4` (cyan)
 
 **Inbox Health card colours:**
+
 - Label: `rgba(255,255,255,0.25)` uppercase tiny
 - Status text "Nuclear meltdown": `#F87171` (red-400)
 - Count "50,757 emails": white, large, heavy weight
@@ -83,6 +87,7 @@ Note: the `inset 0 1px 0 rgba(255,255,255,0.08)` top-edge highlight from the cur
 - Progress bar fill: `#EF4444` at 100% width
 
 **Row styling (category rows):**
+
 - Background: `#1e1e2a`
 - Border: `1px solid rgba(255,255,255,0.04)`
 - Border radius: `10px`
@@ -100,23 +105,26 @@ Note: the `inset 0 1px 0 rgba(255,255,255,0.08)` top-edge highlight from the cur
 **Data:** Change from CATEGORIES list to SENDERS list — both animations now show the sender list screen.
 
 **New sender data:**
+
 ```ts
 const SENDERS = [
-  { id: 1, name: "Credit Karma",      count: 2345 },
-  { id: 2, name: "LinkedIn Alerts",   count: 1392 },
-  { id: 3, name: "Twitch",            count: 535  },
-  { id: 4, name: "eBay Auctions",     count: 463  },
-  { id: 5, name: "PlayStation",       count: 388  },
+  { id: 1, name: "Credit Karma", count: 2345 },
+  { id: 2, name: "LinkedIn Alerts", count: 1392 },
+  { id: 3, name: "Twitch", count: 535 },
+  { id: 4, name: "eBay Auctions", count: 463 },
+  { id: 5, name: "PlayStation", count: 388 },
 ];
 ```
 
 **Row layout change:**
+
 ```
 OLD: [○ checkbox] [● dot] [Category name] [count badge]
 NEW: [○ checkbox] [C avatar] [Sender name / N emails stacked]
 ```
 
 **Row styling:**
+
 - Idle: `#1e1e2a` bg, `1px solid rgba(255,255,255,0.04)` border
 - Selected: `rgba(74,222,128,0.08)` bg, `1px solid rgba(74,222,128,0.18)` border
 - Checkbox idle: `16px` circle, `1.5px solid rgba(255,255,255,0.22)` border, transparent fill
@@ -127,6 +135,7 @@ NEW: [○ checkbox] [C avatar] [Sender name / N emails stacked]
 - Email count below name: `9px`, `rgba(255,255,255,0.30)` idle / `rgba(74,222,128,0.45)` selected
 
 **Header:**
+
 - Left: `← Newsletter` (back arrow + category name)
 - Right: `N selected` when selecting, else `N senders`
 
@@ -149,6 +158,7 @@ The current single-button layout is replaced with two buttons rendered side by s
 **Row layout:** Rows use the same avatar + stacked text model as DeletionAnimation. The existing `struckIds` mechanic is preserved — rows turn orange and dissolve. The orange/struck colour replaces the current red.
 
 Row struck-state changes (orange tint, not red):
+
 - Row bg: `rgba(249,115,22,0.08)`, border: `1px solid rgba(249,115,22,0.18)`
 - Avatar bg: `rgba(249,115,22,0.12)`, text: `rgba(249,115,22,0.8)`
 - Sender name: `rgba(249,115,22,0.9)`, **retain strikethrough** (`textDecorationLine: line-through`, `textDecorationColor: rgba(249,115,22,0.7)`)
@@ -156,6 +166,7 @@ Row struck-state changes (orange tint, not red):
 - Live counter during `removing` phase is retained, colours updated: `rgba(249,115,22,0.7)` and `rgba(249,115,22,0.5)`
 
 **Button bar (two-button layout, same structure as DeletionAnimation):**
+
 - Idle: both buttons gray/disabled
 - Confirming: UNSUB & DELETE → solid `#F97316` bg, white text. DELETE stays gray.
 - Removing: UNSUB & DELETE fades to `rgba(249,115,22,0.35)`, label "Removing..."
@@ -184,14 +195,14 @@ Row struck-state changes (orange tint, not red):
 
 ## Files Changed Summary
 
-| File | Action |
-|------|--------|
-| `src/components/PhoneShell.tsx` | Modify — bg colour + shadow |
-| `src/components/InboxHealthAnimation.tsx` | **Create** — static summary screen |
-| `src/components/DeletionAnimation.tsx` | Modify — row layout, data, buttons |
-| `src/components/UnsubscribeAnimation.tsx` | Modify — row layout, buttons |
-| `src/app/page.tsx` or `Hero.tsx` | Modify — swap component, remove blobs |
-| `src/components/InAction.tsx` | Modify — remove glow divs |
+| File                                      | Action                                |
+| ----------------------------------------- | ------------------------------------- |
+| `src/components/PhoneShell.tsx`           | Modify — bg colour + shadow           |
+| `src/components/InboxHealthAnimation.tsx` | **Create** — static summary screen    |
+| `src/components/DeletionAnimation.tsx`    | Modify — row layout, data, buttons    |
+| `src/components/UnsubscribeAnimation.tsx` | Modify — row layout, buttons          |
+| `src/app/page.tsx` or `Hero.tsx`          | Modify — swap component, remove blobs |
+| `src/components/InAction.tsx`             | Modify — remove glow divs             |
 
 ---
 
@@ -200,3 +211,9 @@ Row struck-state changes (orange tint, not red):
 - Full landing page restyle (typography, section backgrounds, spacing)
 - Pricing section redesign
 - Any new sections
+
+All set. Here's what to say at the start of next session:
+
+▎ "Let's implement the animation restyle plan using subagent-driven development."
+
+That's all I need — I'll pick up the context from memory, load the plan, and dispatch tasks one at a time with review between each. Pricing and full restyle follow after that.

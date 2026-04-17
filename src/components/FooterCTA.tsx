@@ -2,7 +2,10 @@
 
 export default function FooterCTA() {
   return (
-    <section className="py-24 px-6 bg-brand-dark" aria-label="Final call to action">
+    <section
+      className="py-24 px-6 bg-brand-dark"
+      aria-label="Final call to action"
+    >
       <div className="mx-auto max-w-3xl">
         <div
           style={{
@@ -13,7 +16,10 @@ export default function FooterCTA() {
         >
           <div
             className="flex flex-col items-center text-center px-10 py-16 gap-6"
-            style={{ background: "#160D2E", borderRadius: "calc(1.25rem - 1px)" }}
+            style={{
+              background: "#160D2E",
+              borderRadius: "calc(1.25rem - 1px)",
+            }}
           >
             <h2
               className="font-black leading-[1.05] tracking-tight text-white"
@@ -32,8 +38,8 @@ export default function FooterCTA() {
               </span>
             </h2>
 
-            <p className="text-base text-white/55 lg:text-lg max-w-sm leading-relaxed">
-              Start with 500 emails free. No card required.
+            <p className="text-base text-white/55 lg:text-md max-w-sm leading-relaxed">
+              Start with 1000 emails free. No card required.
             </p>
 
             <a
