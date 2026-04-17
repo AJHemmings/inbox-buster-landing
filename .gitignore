@@ -45,3 +45,4 @@ next-env.d.ts
 
 # temp directories
 /tmp-scaffold/
+.superpowers/
