@@ -38,9 +38,28 @@
   100% { transform: translateX(-25%); }
 }
 
-@keyframes dotWave {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.5); }
+@keyframes shineBar {
+  0%   { left: -15%; }
+  100% { left: 110%; }
+}
+
+/* ── Section divider shine ─────────────────────────────────────────────────── */
+
+.section-divider-shine {
+  position: absolute;
+  top: 0;
+  left: -15%;
+  width: 15%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.5) 60%,
+    transparent
+  );
+  animation: shineBar 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* ── Entrance animations ───────────────────────────────────────────────────── */
@@ -101,6 +120,10 @@
   .sp-header,
   .inaction-header,
   .inaction-mockup {
+    animation: none;
+  }
+
+  .section-divider-shine {
     animation: none;
   }
 }
