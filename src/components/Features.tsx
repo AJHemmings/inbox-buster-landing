@@ -47,12 +47,13 @@ const FEATURES: Feature[] = [
     title: "Move & Archive",
     description:
       "Send emails to folders or archive in bulk. Your structure, your rules.",
+    comingSoon: true,
   },
   {
     icon: Globe,
-    title: "Coming Soon: Web & iOS",
+    title: "Coming Soon: iOS",
     description:
-      "Already on Android. Browser and iPhone support is on the way.",
+      "Already on Android and web. iPhone support is on the way.",
     comingSoon: true,
   },
 ];

@@ -145,7 +145,7 @@ export default function UnsubscribeAnimation() {
                 {sender.name.charAt(0)}
               </div>
 
-              {/* Stacked name + count — name retains strikethrough when struck */}
+              {/* Stacked name + count - name retains strikethrough when struck */}
               <div className="flex-1 min-w-0">
                 <p
                   className="text-[11px] font-semibold leading-tight transition-all duration-200"
@@ -249,7 +249,7 @@ export default function UnsubscribeAnimation() {
           </div>
         ) : (
           <div className="flex gap-2">
-            {/* DELETE — always disabled */}
+            {/* DELETE - always disabled */}
             <button
               disabled
               aria-disabled
@@ -264,7 +264,7 @@ export default function UnsubscribeAnimation() {
               🗑 Delete
             </button>
 
-            {/* UNSUB & DELETE — active */}
+            {/* UNSUB & DELETE - active */}
             <button
               disabled
               className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase transition-all duration-300"

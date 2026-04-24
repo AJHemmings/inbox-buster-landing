@@ -1,0 +1,5 @@
+<svg id="logo-dark" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 35H75V65H25V35Z" stroke="#22C55E" stroke-width="8" stroke-linejoin="round"/>
+                            <path d="M25 35L50 52L75 35" stroke="#22C55E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M85 15L70 35H85L70 55" fill="#F59E0B"/>
+                        </svg>

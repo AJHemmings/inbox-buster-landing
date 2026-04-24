@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Zap } from "lucide-react";
+import BrandIcon from "@/components/BrandIcon";
 
 const FOOTER_LINKS = [
   { label: "Features", href: "#features" },
@@ -21,13 +21,7 @@ export default function Footer() {
             className="flex items-center gap-2 select-none shrink-0"
             aria-label="Inbox Buster home"
           >
-            <Zap
-              size={20}
-              className="text-brand-green"
-              fill="currentColor"
-              strokeWidth={0}
-              aria-hidden="true"
-            />
+            <BrandIcon size={20} />
             <span className="text-lg font-black uppercase tracking-widest leading-none">
               <span className="text-white">INBOX</span>
               <span className="text-brand-green">BUSTER</span>

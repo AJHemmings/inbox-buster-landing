@@ -211,7 +211,7 @@ export default function DeletionAnimation() {
           </div>
         ) : (
           <div className="flex gap-2">
-            {/* DELETE — active */}
+            {/* DELETE - active */}
             <button
               disabled
               className="flex-1 flex items-center justify-center gap-1.5 rounded-xl py-3 text-[9px] font-bold tracking-wide uppercase transition-all duration-300"
@@ -238,7 +238,7 @@ export default function DeletionAnimation() {
               🗑 {isDeleting ? "Deleting..." : "Delete"}
             </button>
 
-            {/* UNSUB & DELETE — always disabled */}
+            {/* UNSUB & DELETE - always disabled */}
             <button
               disabled
               aria-disabled

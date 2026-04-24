@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 
@@ -12,6 +13,7 @@ interface Plan {
   description: string;
   features: string[];
   cta: string;
+  ctaHref: string;
   ctaStyle: "green" | "purple" | "outline";
   hero: boolean;
 }
@@ -23,51 +25,55 @@ const PLANS: Plan[] = [
     badgeStyle: "gray",
     price: "Free",
     period: null,
-    description: "Clean your first 1,000 emails. No card required.",
+    description: "Clean your first 1,000 emails every month. No card required.",
     features: [
-      "1,000 email clean-up",
+      "1,000 emails per month",
       "Smart categorisation",
       "Mass deletion",
       "Bulk unsubscribe",
     ],
-    cta: "Join the Waitlist →",
+    cta: "Join the Waiting List",
+    ctaHref: "/waitlist",
     ctaStyle: "green",
     hero: false,
   },
   {
-    id: "lifetime",
+    id: "premium",
     badge: "Own it forever",
     badgeStyle: "purple",
-    price: "£4.99",
-    period: "one-time",
+    price: "£5",
+    period: "one-off",
     description:
-      "Less than a coffee. Pay once, clean your inbox forever. All features, all future updates.",
+      "Pay once, clean your inbox forever. Unlimited emails, no renewals, no expiry.",
     features: [
       "Unlimited emails",
-      "All features included",
-      "All future updates",
-      "Priority support",
+      "Smart categorisation",
+      "Mass deletion",
+      "Bulk unsubscribe",
       "One payment. That's it.",
     ],
-    cta: "Join the Waitlist →",
+    cta: "Join the Waiting List",
+    ctaHref: "/waitlist",
     ctaStyle: "purple",
     hero: true,
   },
   {
-    id: "supporter",
-    badge: "Support the dev",
+    id: "premium-support",
+    badge: "Premium + Support",
     badgeStyle: "green",
-    price: "£2.50",
-    period: "/month",
+    price: "£5",
+    period: "+ £2.50/mo",
     description:
-      "Not for features — this is for people who want to actively back ongoing development. Every penny goes straight into the app.",
+      "Everything in Premium, plus access to support ticket submission. Cancel the subscription anytime. Your premium status stays.",
     features: [
       "Unlimited emails",
-      "All features included",
-      "Early access to new features",
-      "Priority support",
+      "Smart categorisation",
+      "Mass deletion",
+      "Bulk unsubscribe",
+      "Support ticket access",
     ],
-    cta: "Join the Waitlist →",
+    cta: "Join the Waiting List",
+    ctaHref: "/waitlist",
     ctaStyle: "outline",
     hero: false,
   },
@@ -89,41 +95,45 @@ function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
   );
 }
 
-function CtaButton({ style, label }: { style: Plan["ctaStyle"]; label: string }) {
+function CtaButton({ style, label, href }: { style: Plan["ctaStyle"]; label: string; href: string }) {
   const base =
     "block w-full rounded-xl py-3.5 text-center text-sm font-black uppercase tracking-wider transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2";
+  const isExternal = href.startsWith("http");
+  const externalProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
+  const Wrapper = ({ className, style: inlineStyle, children }: { className: string; style?: React.CSSProperties; children: React.ReactNode }) =>
+    isExternal ? (
+      <a href={href} {...externalProps} className={className} style={inlineStyle}>{children}</a>
+    ) : (
+      <Link href={href} className={className} style={inlineStyle}>{children}</Link>
+    );
 
   if (style === "green") {
     return (
-      <Link
-        href="/waitlist"
+      <Wrapper
         className={`${base} bg-brand-green text-brand-dark hover:brightness-110 hover:scale-[1.02] active:scale-100`}
         style={{ boxShadow: "0 4px 18px rgba(74,222,128,0.25)" }}
       >
         {label}
-      </Link>
+      </Wrapper>
     );
   }
 
   if (style === "purple") {
     return (
-      <Link
-        href="/waitlist"
+      <Wrapper
         className={`${base} bg-brand-purple text-white hover:brightness-110 hover:scale-[1.02] active:scale-100`}
         style={{ boxShadow: "0 4px 18px rgba(139,92,246,0.30)" }}
       >
         {label}
-      </Link>
+      </Wrapper>
     );
   }
 
   return (
-    <Link
-      href="/waitlist"
-      className={`${base} border-2 border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple/8 hover:scale-[1.02] active:scale-100`}
-    >
+    <Wrapper className={`${base} border-2 border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple/8 hover:scale-[1.02] active:scale-100`}>
       {label}
-    </Link>
+    </Wrapper>
   );
 }
 
@@ -185,7 +195,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       </ul>
 
       <div className="mt-auto">
-        <CtaButton style={plan.ctaStyle} label={plan.cta} />
+        <CtaButton style={plan.ctaStyle} label={plan.cta} href={plan.ctaHref} />
       </div>
     </div>
   );
@@ -234,12 +244,12 @@ export default function Pricing() {
           }}
         >
           <p className="mb-1 text-base font-bold leading-relaxed text-white">
-            Honest pricing. Open books.
+            Honest pricing. No surprises.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            £4.99 unlocks everything, permanently — no subscriptions, no renewals.
-            The £2.50/month option isn&rsquo;t a different feature tier. It&rsquo;s for people who want to
-            actively support ongoing development. Every penny goes straight back into the app.
+            £5 unlocks unlimited emails, permanently. One payment, no renewals, no expiry.
+            The £2.50/month add-on gives you access to support tickets. Cancel anytime. Your
+            premium status stays.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
@@ -256,7 +266,7 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            . As we grow, that percentage goes up — and we&rsquo;ll announce every increase publicly.
+            . As we grow, that percentage goes up, and we&rsquo;ll announce every increase publicly.
           </p>
         </div>
       </div>

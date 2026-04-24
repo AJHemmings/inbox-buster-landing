@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Zap } from "lucide-react";
+import BrandIcon from "@/components/BrandIcon";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
@@ -18,13 +18,7 @@ export default function Navbar() {
           className="flex items-center gap-2 select-none"
           aria-label="Inbox Buster home"
         >
-          <Zap
-            size={22}
-            className="text-brand-green"
-            fill="currentColor"
-            strokeWidth={0}
-            aria-hidden="true"
-          />
+          <BrandIcon size={22} />
           <span className="text-xl font-black uppercase tracking-widest leading-none">
             <span className="text-white">INBOX</span>
             <span className="text-brand-green">BUSTER</span>

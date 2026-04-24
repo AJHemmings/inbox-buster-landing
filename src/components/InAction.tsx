@@ -67,7 +67,12 @@ export default function InAction() {
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
           >
             Watch the clutter{" "}
-            <span className="text-gradient-purple-green">disappear.</span>
+            <span
+              className="text-gradient-purple-green"
+              style={{ animation: "wordDisappear 4s linear infinite" }}
+            >
+              disappear.
+            </span>
           </h2>
 
           <p
@@ -107,6 +112,13 @@ export default function InAction() {
           ))}
         </div>
       </div>
+      <style>{`
+        @keyframes wordDisappear {
+          0%, 30%       { opacity: 1; }
+          58%, 82%      { opacity: 0; }
+          88%, 100%     { opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }
