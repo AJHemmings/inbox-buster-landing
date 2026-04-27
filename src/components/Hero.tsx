@@ -69,7 +69,7 @@ export default function Hero() {
           >
             <span className="block text-white">Your inbox is</span>
             <span className="block relative" style={{ isolation: "isolate" }}>
-              {/* Flame row — flames.md SVG paths, sits behind the text */}
+              {/* Flame row - flames.md SVG paths, sits behind the text */}
               <div
                 aria-hidden="true"
                 style={{
@@ -102,7 +102,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Text — sits on top of flames */}
+              {/* Text - sits on top of flames */}
               <span
                 style={{
                   background: "linear-gradient(to top, #7F1D1D 0%, #DC2626 28%, #F97316 62%, #FCD34D 100%)",

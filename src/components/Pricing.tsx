@@ -4,18 +4,23 @@ import React from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 
+type BadgeStyle = "gray" | "purple" | "green" | "amber";
+type CtaStyle = "green" | "purple" | "outline" | "amber";
+type CardVariant = "standard" | "pwyw" | "bmc";
+
 interface Plan {
   id: string;
   badge: string;
-  badgeStyle: "gray" | "purple" | "green";
+  badgeStyle: BadgeStyle;
   price: string;
   period: string | null;
   description: string;
   features: string[];
   cta: string;
   ctaHref: string;
-  ctaStyle: "green" | "purple" | "outline";
+  ctaStyle: CtaStyle;
   hero: boolean;
+  variant: CardVariant;
 }
 
 const PLANS: Plan[] = [
@@ -36,35 +41,38 @@ const PLANS: Plan[] = [
     ctaHref: "/waitlist",
     ctaStyle: "green",
     hero: false,
+    variant: "standard",
   },
   {
     id: "premium",
     badge: "Own it forever",
     badgeStyle: "purple",
-    price: "£5",
+    price: "",
     period: "one-off",
     description:
-      "Pay once, clean your inbox forever. Unlimited emails, no renewals, no expiry.",
+      "Pay what you feel is fair. Unlock unlimited emails forever. One payment, no renewals, no expiry.",
     features: [
       "Unlimited emails",
       "Smart categorisation",
       "Mass deletion",
       "Bulk unsubscribe",
-      "One payment. That's it.",
+      "Your price. Your call.",
     ],
     cta: "Join the Waiting List",
+    // At launch: swap to "https://app.inboxbuster.com/upgrade?amount={amount}" - see backend handover doc
     ctaHref: "/waitlist",
     ctaStyle: "purple",
     hero: true,
+    variant: "pwyw",
   },
   {
     id: "premium-support",
     badge: "Premium + Support",
     badgeStyle: "green",
-    price: "£5",
-    period: "+ £2.50/mo",
+    price: "£2.50",
+    period: "/mo",
     description:
-      "Everything in Premium, plus access to support ticket submission. Cancel the subscription anytime. Your premium status stays.",
+      "Get Premium first, then add support ticket access for £2.50/mo. Cancel anytime. Your premium status stays.",
     features: [
       "Unlimited emails",
       "Smart categorisation",
@@ -73,17 +81,39 @@ const PLANS: Plan[] = [
       "Support ticket access",
     ],
     cta: "Join the Waiting List",
+    // At launch: swap to "https://app.inboxbuster.com/upgrade?plan=subscription"
     ctaHref: "/waitlist",
     ctaStyle: "outline",
     hero: false,
+    variant: "standard",
+  },
+  {
+    id: "bmc",
+    badge: "Buy me a coffee",
+    badgeStyle: "amber",
+    price: "☕",
+    period: null,
+    description:
+      "No account needed. No app changes. Just a thank you if Inbox Buster saves you time.",
+    features: [
+      "Any amount, any time",
+      "No strings attached",
+      "Means a lot to an indie dev",
+    ],
+    cta: "Buy me a coffee",
+    ctaHref: "https://buymeacoffee.com/tonextlevel",
+    ctaStyle: "amber",
+    hero: false,
+    variant: "bmc",
   },
 ];
 
-function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
-  const classes: Record<Plan["badgeStyle"], string> = {
+function Badge({ style, label }: { style: BadgeStyle; label: string }) {
+  const classes: Record<BadgeStyle, string> = {
     gray: "bg-white/10 text-white/60",
     purple: "bg-brand-purple text-white",
     green: "bg-brand-green/15 text-brand-green",
+    amber: "bg-amber-500/15 text-amber-400",
   };
 
   return (
@@ -95,17 +125,39 @@ function Badge({ style, label }: { style: Plan["badgeStyle"]; label: string }) {
   );
 }
 
-function CtaButton({ style, label, href }: { style: Plan["ctaStyle"]; label: string; href: string }) {
+function CtaButton({
+  style,
+  label,
+  href,
+}: {
+  style: CtaStyle;
+  label: string;
+  href: string;
+}) {
   const base =
     "block w-full rounded-xl py-3.5 text-center text-sm font-black uppercase tracking-wider transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2";
   const isExternal = href.startsWith("http");
-  const externalProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
+  const externalProps = isExternal
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
 
-  const Wrapper = ({ className, style: inlineStyle, children }: { className: string; style?: React.CSSProperties; children: React.ReactNode }) =>
+  const Wrapper = ({
+    className,
+    style: inlineStyle,
+    children,
+  }: {
+    className: string;
+    style?: React.CSSProperties;
+    children: React.ReactNode;
+  }) =>
     isExternal ? (
-      <a href={href} {...externalProps} className={className} style={inlineStyle}>{children}</a>
+      <a href={href} {...externalProps} className={className} style={inlineStyle}>
+        {children}
+      </a>
     ) : (
-      <Link href={href} className={className} style={inlineStyle}>{children}</Link>
+      <Link href={href} className={className} style={inlineStyle}>
+        {children}
+      </Link>
     );
 
   if (style === "green") {
@@ -130,8 +182,21 @@ function CtaButton({ style, label, href }: { style: Plan["ctaStyle"]; label: str
     );
   }
 
+  if (style === "amber") {
+    return (
+      <Wrapper
+        className={`${base} bg-amber-500 text-white hover:brightness-110 hover:scale-[1.02] active:scale-100`}
+        style={{ boxShadow: "0 4px 18px rgba(245,158,11,0.25)" }}
+      >
+        {label}
+      </Wrapper>
+    );
+  }
+
   return (
-    <Wrapper className={`${base} border-2 border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple/8 hover:scale-[1.02] active:scale-100`}>
+    <Wrapper
+      className={`${base} border-2 border-brand-purple bg-transparent text-brand-purple hover:bg-brand-purple/8 hover:scale-[1.02] active:scale-100`}
+    >
       {label}
     </Wrapper>
   );
@@ -143,7 +208,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       className={[
         "pricing-card relative flex flex-col rounded-2xl p-7",
         plan.hero
-          ? "md:-mt-4 md:mb-4 border-2 border-brand-purple"
+          ? "lg:-mt-4 lg:mb-4 border-2 border-brand-purple"
           : "border border-white/8",
       ].join(" ")}
       style={{
@@ -160,17 +225,35 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
         <Badge style={plan.badgeStyle} label={plan.badge} />
       </div>
 
-      <div className="mb-2 flex items-baseline gap-1">
-        <span
-          className="font-black tracking-tight text-white"
-          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1, whiteSpace: "pre-line" }}
-        >
-          {plan.price}
-        </span>
-        {plan.period && (
-          <span className="text-sm font-medium text-white/40">{plan.period}</span>
-        )}
-      </div>
+      {plan.variant === "pwyw" ? (
+        // Pre-launch: show static copy. At launch, restore the amount input here -
+        // see docs/plans/pwyw-backend-handover.md for the full launch checklist.
+        <div className="mb-2 flex flex-col gap-1">
+          <span
+            className="font-black tracking-tight text-white"
+            style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", lineHeight: 1.15 }}
+          >
+            You choose
+          </span>
+          <span className="text-sm font-medium text-white/40">one-off</span>
+        </div>
+      ) : (
+        <div className="mb-2 flex items-baseline gap-1">
+          <span
+            className="font-black tracking-tight text-white"
+            style={{
+              fontSize: "clamp(2rem, 4vw, 2.75rem)",
+              lineHeight: 1,
+              whiteSpace: "pre-line",
+            }}
+          >
+            {plan.price}
+          </span>
+          {plan.period && (
+            <span className="text-sm font-medium text-white/40">{plan.period}</span>
+          )}
+        </div>
+      )}
 
       <p className="mb-6 text-sm leading-relaxed text-white/55">{plan.description}</p>
 
@@ -179,15 +262,28 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
         style={{
           background: plan.hero
             ? "linear-gradient(90deg, rgba(139,92,246,0.18) 0%, rgba(139,92,246,0.04) 100%)"
-            : "rgba(0,0,0,0.06)",
+            : "rgba(255,255,255,0.06)",
         }}
       />
 
       <ul className="mb-8 flex flex-col gap-3">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-center gap-3">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/12">
-              <Check size={11} strokeWidth={3} className="text-brand-green" aria-hidden="true" />
+            <span
+              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                plan.badgeStyle === "amber"
+                  ? "bg-amber-500/12"
+                  : "bg-brand-green/12"
+              }`}
+            >
+              <Check
+                size={11}
+                strokeWidth={3}
+                className={
+                  plan.badgeStyle === "amber" ? "text-amber-400" : "text-brand-green"
+                }
+                aria-hidden="true"
+              />
             </span>
             <span className="text-sm font-medium text-white/75">{feature}</span>
           </li>
@@ -229,7 +325,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:items-start">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 md:items-start">
           {PLANS.map((plan, i) => (
             <PricingCard key={plan.id} plan={plan} index={i} />
           ))}
@@ -240,20 +336,21 @@ export default function Pricing() {
           style={{
             background: "rgba(74,222,128,0.04)",
             borderLeft: "4px solid rgba(74,222,128,0.5)",
-            animationDelay: "350ms",
+            animationDelay: "400ms",
           }}
         >
           <p className="mb-1 text-base font-bold leading-relaxed text-white">
             Honest pricing. No surprises.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            £5 unlocks unlimited emails, permanently. One payment, no renewals, no expiry.
-            The £2.50/month add-on gives you access to support tickets. Cancel anytime. Your
-            premium status stays.
+            Pay what you feel is fair to unlock unlimited emails, permanently. One payment,
+            no renewals, no expiry. The £2.50/month add-on gives you support ticket access.
+            Cancel anytime. Your premium status stays.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
-            No investor pressure. No upsell traps. We&rsquo;ll always be transparent about how your money is used.
+            No investor pressure. No upsell traps. We&rsquo;ll always be transparent about
+            how your money is used.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/55">
@@ -266,7 +363,8 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            . As we grow, that percentage goes up, and we&rsquo;ll announce every increase publicly.
+            . As we grow, that percentage goes up, and we&rsquo;ll announce every increase
+            publicly.
           </p>
         </div>
       </div>

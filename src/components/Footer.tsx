@@ -2,10 +2,10 @@ import Link from "next/link";
 import BrandIcon from "@/components/BrandIcon";
 
 const FOOTER_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms", href: "#" },
+  { label: "Features", href: "#features", internal: false },
+  { label: "Pricing", href: "#pricing", internal: false },
+  { label: "Privacy Policy", href: "/privacy", internal: true },
+  { label: "Terms", href: "/terms", internal: true },
 ];
 
 export default function Footer() {
@@ -33,14 +33,23 @@ export default function Footer() {
               className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
               role="list"
             >
-              {FOOTER_LINKS.map(({ label, href }) => (
+              {FOOTER_LINKS.map(({ label, href, internal }) => (
                 <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
-                  >
-                    {label}
-                  </a>
+                  {internal ? (
+                    <Link
+                      href={href}
+                      className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
+                    >
+                      {label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={href}
+                      className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
+                    >
+                      {label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
