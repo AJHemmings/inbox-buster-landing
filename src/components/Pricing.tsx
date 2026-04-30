@@ -316,7 +316,7 @@ export default function Pricing() {
             className="mb-4 font-black leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(1.9rem, 4.5vw, 3rem)" }}
           >
-            Simple pricing.{" "}
+            Simple pricing.<br />
             <span className="text-brand-purple">No surprises.</span>
           </h2>
 
@@ -340,7 +340,7 @@ export default function Pricing() {
           }}
         >
           <p className="mb-1 text-base font-bold leading-relaxed text-white">
-            Honest pricing.<br />No surprises.
+            Honest pricing. No surprises.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
             Pay what you feel is fair to unlock unlimited emails, permanently. One payment -

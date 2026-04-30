@@ -22,7 +22,7 @@ const FEATURES: Feature[] = [
     icon: BarChart2,
     title: "Inbox Summary",
     description:
-      "A clear breakdown of who's filling your inbox and exactly how bad it's gotten.",
+      "A clear breakdown of who's filling your inbox and exactly how bad it's got.",
   },
   {
     icon: LayoutGrid,
