@@ -332,7 +332,7 @@ export default function Pricing() {
         </div>
 
         <div
-          className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-8 py-7"
+          className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-4 sm:px-8 py-7"
           style={{
             background: "rgba(74,222,128,0.04)",
             borderLeft: "4px solid rgba(74,222,128,0.5)",

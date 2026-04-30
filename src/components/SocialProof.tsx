@@ -61,7 +61,7 @@ function Stars() {
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
     <article
-      className="testimonial-card relative flex min-w-80 w-80 flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+      className="testimonial-card relative flex min-w-[min(320px,80vw)] w-[min(320px,80vw)] flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
       style={{
         boxShadow: "0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
       }}
@@ -162,12 +162,12 @@ export default function SocialProof() {
       <div className="relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32"
+          className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 sm:w-32"
           style={{ background: "linear-gradient(to right, #0F0A1E 0%, transparent 100%)" }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32"
+          className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 sm:w-32"
           style={{ background: "linear-gradient(to left, #0F0A1E 0%, transparent 100%)" }}
         />
 

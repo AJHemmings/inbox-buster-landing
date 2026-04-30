@@ -15,7 +15,7 @@ export default function FooterCTA() {
           }}
         >
           <div
-            className="flex flex-col items-center text-center px-10 py-16 gap-6"
+            className="flex flex-col items-center text-center px-5 sm:px-10 py-10 sm:py-16 gap-6"
             style={{
               background: "#160D2E",
               borderRadius: "calc(1.25rem - 1px)",
