@@ -64,8 +64,8 @@ export default function PrivacyPage() {
           <UL>
             <li>
               <strong className="text-white/80">Account data</strong> - your name, email
-              address, and profile photo, provided via Google or Microsoft OAuth when you
-              sign in. We do not store your password.
+              address, and profile photo, provided when you sign in with Google or
+              Microsoft. We do not store your password.
             </li>
             <li>
               <strong className="text-white/80">Email metadata</strong> - sender name,
@@ -75,20 +75,20 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong className="text-white/80">Payment data</strong> - payments are
-              processed entirely by Stripe. We store only your Stripe customer ID and
-              subscription status. We never see or store your card details.
+              processed entirely by Stripe. We store only a reference to your Stripe
+              account and your subscription status. We never see or store your card details.
             </li>
             <li>
-              <strong className="text-white/80">Usage data</strong> - standard server
-              logs (error reports, request counts) via Vercel. No ad tracking, no
-              behavioural profiling.
+              <strong className="text-white/80">Usage data</strong> - basic error and
+              usage logs to keep the service running. No ad tracking, no behavioural
+              profiling.
             </li>
           </UL>
         </Section>
 
         <Section title="How we use your data">
           <UL>
-            <li>To authenticate you and restore your session across devices</li>
+            <li>To sign you in and keep you logged in across devices</li>
             <li>
               To display your inbox categorisation, sender counts, and cleaning history
               within the app
@@ -168,7 +168,7 @@ export default function PrivacyPage() {
               exists.
             </li>
             <li>
-              Email metadata is not persisted. It is fetched from your email provider on
+              Email metadata is not stored. It is fetched from your email provider on
               demand, processed in memory, and discarded. We do not store your emails.
             </li>
             <li>
@@ -186,7 +186,7 @@ export default function PrivacyPage() {
           <UL>
             <li>The right to access the data we hold about you</li>
             <li>The right to correct inaccurate data</li>
-            <li>The right to delete your data (right to erasure)</li>
+            <li>The right to request deletion of your data (right to erasure)</li>
             <li>
               The right to withdraw consent at any time by deleting your account from
               the Account page in the app
@@ -206,10 +206,10 @@ export default function PrivacyPage() {
 
         <Section title="Cookies">
           <P>
-            InboxBuster does not use advertising or tracking cookies. Firebase Auth uses
-            a session token stored in your browser to keep you signed in. Vercel may set
-            standard infrastructure cookies for routing and performance. No cookie
-            consent banner is shown because no consent-required cookies are used.
+            InboxBuster does not use advertising or tracking cookies. Firebase stores a
+            sign-in cookie in your browser to keep you signed in. Vercel may set technical
+            cookies to ensure the app loads reliably. No cookie consent banner is shown
+            because no consent-required cookies are used.
           </P>
         </Section>
 

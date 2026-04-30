@@ -168,14 +168,14 @@ export default function TermsPage() {
               app
             </li>
             <li>
-              Attempt to bypass rate limits, email quotas, or payment enforcement
+              Attempt to circumvent email quotas, usage limits, or payment requirements
             </li>
             <li>
-              Use the app in a way that violates Google&rsquo;s or Microsoft&rsquo;s API
+              Use the app in a way that violates Google&rsquo;s or Microsoft&rsquo;s
               terms of service
             </li>
             <li>
-              Attempt to reverse engineer, decompile, or copy any part of the service
+              Attempt to reverse-engineer or copy any part of the service
             </li>
           </UL>
         </Section>
