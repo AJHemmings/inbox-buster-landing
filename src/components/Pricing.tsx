@@ -50,7 +50,7 @@ const PLANS: Plan[] = [
     price: "",
     period: "one-off",
     description:
-      "Pay what you feel is fair. Unlock unlimited emails forever. One payment, no renewals, no expiry.",
+      "Pay what you feel is fair. Unlock unlimited emails forever. One payment - no renewals, no expiry.",
     features: [
       "Unlimited emails",
       "Smart categorisation",
@@ -340,10 +340,10 @@ export default function Pricing() {
           }}
         >
           <p className="mb-1 text-base font-bold leading-relaxed text-white">
-            Honest pricing. No surprises.
+            Honest pricing.<br />No surprises.
           </p>
           <p className="text-sm leading-relaxed text-white/70">
-            Pay what you feel is fair to unlock unlimited emails, permanently. One payment,
+            Pay what you feel is fair to unlock unlimited emails, permanently. One payment -
             no renewals, no expiry. The £2.50/month add-on gives you support ticket access.
             Cancel anytime. Your premium status stays.
           </p>
@@ -363,7 +363,7 @@ export default function Pricing() {
             >
               Stripe Climate
             </a>
-            . As we grow, that percentage goes up, and we&rsquo;ll announce every increase
+            . As we grow, the percentage increases, and we&rsquo;ll announce every increase
             publicly.
           </p>
         </div>

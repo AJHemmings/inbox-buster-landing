@@ -22,7 +22,7 @@ const FEATURES: Feature[] = [
     icon: BarChart2,
     title: "Inbox Summary",
     description:
-      "A clear breakdown of who's filling your inbox and exactly how bad it's got.",
+      "A clear breakdown of who's filling your inbox and exactly how bad it's gotten.",
   },
   {
     icon: LayoutGrid,
@@ -46,7 +46,7 @@ const FEATURES: Feature[] = [
     icon: FolderInput,
     title: "Move & Archive",
     description:
-      "Send emails to folders or archive in bulk. Your structure, your rules.",
+      "Send emails to folders or archive them in bulk. Your structure, your rules.",
     comingSoon: true,
   },
   {
@@ -124,8 +124,7 @@ export default function Features() {
           </h2>
 
           <p className="mx-auto max-w-xl text-base leading-relaxed text-white/50">
-            Built for the people who&rsquo;ve been putting off inbox cleanup for
-            months. Or years.
+            Built for people who&rsquo;ve been putting off inbox cleanup for months - years.
           </p>
         </div>
 
