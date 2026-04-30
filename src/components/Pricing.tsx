@@ -94,7 +94,7 @@ const PLANS: Plan[] = [
     price: "☕",
     period: null,
     description:
-      "No account needed. No app changes. Just a thank you if Inbox Buster saves you time.",
+      "No account needed. No app changes. Just a thank you if InboxBuster saves you time.",
     features: [
       "Any amount, any time",
       "No strings attached",
@@ -332,7 +332,7 @@ export default function Pricing() {
         </div>
 
         <div
-          className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-8 py-7"
+          className="pricing-callout mx-auto mt-14 max-w-2xl rounded-2xl border border-brand-green/12 px-4 sm:px-8 py-7"
           style={{
             background: "rgba(74,222,128,0.04)",
             borderLeft: "4px solid rgba(74,222,128,0.5)",

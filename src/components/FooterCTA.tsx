@@ -15,7 +15,7 @@ export default function FooterCTA() {
           }}
         >
           <div
-            className="flex flex-col items-center text-center px-10 py-16 gap-6"
+            className="flex flex-col items-center text-center px-5 sm:px-10 py-10 sm:py-16 gap-6"
             style={{
               background: "#160D2E",
               borderRadius: "calc(1.25rem - 1px)",
@@ -44,7 +44,7 @@ export default function FooterCTA() {
 
             <a
               href="#pricing"
-              className="inline-flex items-center rounded-full bg-brand-green px-8 py-4 text-base font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
+              className="inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
               style={{
                 boxShadow:
                   "0 0 0 1px rgba(74,222,128,0.35), 0 8px 40px rgba(74,222,128,0.35)",

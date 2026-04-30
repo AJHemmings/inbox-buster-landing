@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Inbox Buster: Clean Your Inbox in Minutes";
+export const alt = "InboxBuster: Clean Your Inbox in Minutes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -65,7 +65,7 @@ export default function Image() {
             lineHeight: 1,
           }}
         >
-          Inbox Buster
+          InboxBuster
         </div>
 
         {/* Tagline */}

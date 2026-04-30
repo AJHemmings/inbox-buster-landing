@@ -14,8 +14,8 @@ export default function PhoneShell({ children }: { children: React.ReactNode }) 
     <div
       className="relative mx-auto flex flex-col overflow-hidden"
       style={{
-        width: 260,
-        height: 480,
+        width: "min(260px, calc(100vw - 32px))",
+        aspectRatio: "260 / 480",
         background: "#16161f",
         borderRadius: 32,
         border: "1px solid rgba(255,255,255,0.10)",

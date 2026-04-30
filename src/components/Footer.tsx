@@ -19,7 +19,7 @@ export default function Footer() {
           <Link
             href="/"
             className="flex items-center gap-2 select-none shrink-0"
-            aria-label="Inbox Buster home"
+            aria-label="InboxBuster home"
           >
             <BrandIcon size={20} />
             <span className="text-lg font-black uppercase tracking-widest leading-none">
@@ -70,7 +70,7 @@ export default function Footer() {
             🌱 Stripe Climate member. 1% to carbon removal.
           </p>
           <p className="text-xs text-white/20">
-            &copy; {new Date().getFullYear()} Inbox Buster. All rights reserved.
+            &copy; {new Date().getFullYear()} InboxBuster. All rights reserved.
           </p>
         </div>
       </div>
