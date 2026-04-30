@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Terms of Service | Inbox Buster",
-  description: "The terms that govern your use of Inbox Buster.",
+  title: "Terms of Service | InboxBuster",
+  description: "The terms that govern your use of InboxBuster.",
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -47,7 +47,7 @@ export default function TermsPage() {
         <div className="my-8 h-px w-full bg-white/5" />
 
         <P>
-          These terms govern your use of Inbox Buster. By creating an account or using
+          These terms govern your use of InboxBuster. By creating an account or using
           the app, you agree to them. If you have questions, email{" "}
           <a
             href="mailto:adamhemmingsdev@gmail.com"
@@ -60,7 +60,7 @@ export default function TermsPage() {
 
         <Section title="What the service does">
           <P>
-            Inbox Buster connects to your Gmail or Outlook account using OAuth. You
+            InboxBuster connects to your Gmail or Outlook account using OAuth. You
             explicitly grant permission during sign-in and can revoke it at any time from
             your Google or Microsoft account settings. Once connected, the app reads your
             email metadata (senders, subjects, dates, counts) to help you categorise,
@@ -76,7 +76,7 @@ export default function TermsPage() {
               loss caused by unauthorised access to your account.
             </li>
             <li>
-              You must be at least 13 years old to use Inbox Buster.
+              You must be at least 13 years old to use InboxBuster.
             </li>
             <li>
               You may delete your account at any time from the Account page in the app.
@@ -85,7 +85,7 @@ export default function TermsPage() {
         </Section>
 
         <Section title="Payment terms">
-          <P>Inbox Buster offers three tiers:</P>
+          <P>InboxBuster offers three tiers:</P>
           <div className="mt-3 flex flex-col gap-3">
             {[
               {
@@ -182,14 +182,14 @@ export default function TermsPage() {
 
         <Section title="Limitation of liability">
           <P>
-            Inbox Buster is provided as-is, without warranty of any kind. We are not
+            InboxBuster is provided as-is, without warranty of any kind. We are not
             liable for accidental deletion of emails. The app asks you to confirm
             destructive actions before applying them. You are responsible for reviewing
             those confirmations.
           </P>
           <p className="mt-3 text-sm leading-relaxed text-white/60">
             To the maximum extent permitted by law, our total liability to you for any
-            claim is capped at the amount you paid to Inbox Buster in the 12 months prior
+            claim is capped at the amount you paid to InboxBuster in the 12 months prior
             to the claim arising.
           </p>
         </Section>
@@ -224,7 +224,7 @@ export default function TermsPage() {
 
         <Section title="Contact">
           <P>
-            Inbox Buster is operated by Adam Hemmings. For any questions about these
+            InboxBuster is operated by Adam Hemmings. For any questions about these
             terms, email{" "}
             <a
               href="mailto:adamhemmingsdev@gmail.com"

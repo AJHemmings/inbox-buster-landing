@@ -130,7 +130,7 @@ export default function Hero() {
               animationDelay: "160ms",
             }}
           >
-            Mass delete. Unsubscribe in bulk. Sort the chaos. Inbox Buster takes
+            Mass delete. Unsubscribe in bulk. Sort the chaos. InboxBuster takes
             the job you&apos;ve been putting off and finishes it in minutes.
           </p>
 
@@ -260,8 +260,8 @@ export default function Hero() {
           82%      { opacity: 1;    }
         }
         .mo-fire {
-          width: 85px;
-          margin: 0 -25px;
+          width: clamp(44px, 6.5vw, 85px);
+          margin: 0 clamp(-25px, -2vw, -13px);
           filter: drop-shadow(0px -15px 30px rgba(243, 110, 33, 0.8));
           position: relative;
           overflow: visible;

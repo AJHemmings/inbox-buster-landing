@@ -11,7 +11,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: "alex",
     quote:
-      "I had 12,000 unread emails. Inbox Buster cleared 9,000 of them in under 10 minutes.",
+      "I had 12,000 unread emails. InboxBuster cleared 9,000 of them in under 10 minutes.",
     author: "Alex T.",
     role: "Android user",
   },
@@ -31,7 +31,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: "priya",
     quote:
-      "My inbox went from 4,200 unread to zero. Inbox Buster did in 5 minutes what I'd been avoiding for 3 years.",
+      "My inbox went from 4,200 unread to zero. InboxBuster did in 5 minutes what I'd been avoiding for 3 years.",
     author: "Priya K.",
     role: "Early access user",
   },

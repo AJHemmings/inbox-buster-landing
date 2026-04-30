@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy | Inbox Buster",
-  description: "How Inbox Buster collects, uses, and protects your data.",
+  title: "Privacy Policy | InboxBuster",
+  description: "How InboxBuster collects, uses, and protects your data.",
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         <div className="my-8 h-px w-full bg-white/5" />
 
         <P>
-          Inbox Buster is built by an independent developer. This policy explains what
+          InboxBuster is built by an independent developer. This policy explains what
           data is collected when you use the app, how it is used, and your rights over it.
           If anything is unclear, email{" "}
           <a
@@ -206,7 +206,7 @@ export default function PrivacyPage() {
 
         <Section title="Cookies">
           <P>
-            Inbox Buster does not use advertising or tracking cookies. Firebase Auth uses
+            InboxBuster does not use advertising or tracking cookies. Firebase Auth uses
             a session token stored in your browser to keep you signed in. Vercel may set
             standard infrastructure cookies for routing and performance. No cookie
             consent banner is shown because no consent-required cookies are used.
@@ -223,7 +223,7 @@ export default function PrivacyPage() {
 
         <Section title="Contact">
           <P>
-            Inbox Buster is operated by Adam Hemmings. For any privacy-related
+            InboxBuster is operated by Adam Hemmings. For any privacy-related
             questions, email{" "}
             <a
               href="mailto:adamhemmingsdev@gmail.com"

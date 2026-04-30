@@ -94,7 +94,7 @@ const PLANS: Plan[] = [
     price: "☕",
     period: null,
     description:
-      "No account needed. No app changes. Just a thank you if Inbox Buster saves you time.",
+      "No account needed. No app changes. Just a thank you if InboxBuster saves you time.",
     features: [
       "Any amount, any time",
       "No strings attached",

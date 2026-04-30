@@ -150,7 +150,7 @@ export default function WaitlistPage() {
             <p className="text-white/60 leading-relaxed">
               We&apos;ll email you at{" "}
               <span className="font-semibold text-white/80">{email}</span> when
-              Inbox Buster launches.
+              InboxBuster launches.
             </p>
             <Link
               href="/"
@@ -168,7 +168,7 @@ export default function WaitlistPage() {
                 Get early access.
               </h1>
               <p className="mb-4 text-white/60 leading-relaxed">
-                Be among the first to use Inbox Buster and take back control of
+                Be among the first to use InboxBuster and take back control of
                 your inbox.
               </p>
               <div
