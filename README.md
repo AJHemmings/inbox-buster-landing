@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# ⚡ INBOX BUSTER
+# ⚡ INBOXBUSTER
 
 ### Your inbox is a disaster. Let's fix that.
 
@@ -47,7 +47,7 @@ Inbox Buster takes the job you've been putting off and finishes it in minutes.
 | 🔕 | **Bulk Unsubscribe** | Unsubscribe from entire sender lists and delete their emails in one action |
 | 📁 | **Move & Archive** | Send emails to folders or archive in bulk — your way, your structure |
 | 📊 | **Inbox Summary** | A clear breakdown of who's filling your inbox and how bad it really is |
-| 🌐 | **Web & iOS — Coming Soon** | Already on Android — browser and iPhone support on the way |
+| 🌐 | **Web & iOS — Coming Soon** | Already on Android and browser - iPhone support on the way |
 
 ---
 
