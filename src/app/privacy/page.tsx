@@ -178,6 +178,27 @@ export default function PrivacyPage() {
           </UL>
         </Section>
 
+        <Section title="How we protect your data">
+          <UL>
+            <li>
+              All data transmitted between the app and our servers is encrypted in transit
+              using HTTPS/TLS.
+            </li>
+            <li>
+              OAuth access tokens and refresh tokens are encrypted at rest before being
+              stored in our database.
+            </li>
+            <li>
+              Email metadata (sender address, subject line, date) is stored in Firestore
+              with strict server-side access controls — client applications have read-only
+              access and cannot write directly to sensitive collections.
+            </li>
+            <li>
+              Only authenticated server-side processes can modify stored tokens or user data.
+            </li>
+          </UL>
+        </Section>
+
         <Section title="Your rights (GDPR)">
           <P>
             If you are based in the UK or EU, you have the following rights over your
