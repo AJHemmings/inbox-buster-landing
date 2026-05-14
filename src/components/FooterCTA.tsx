@@ -1,5 +1,7 @@
 "use client";
 
+import { CTA_HREF } from "@/lib/launch";
+
 export default function FooterCTA() {
   return (
     <section
@@ -43,7 +45,7 @@ export default function FooterCTA() {
             </p>
 
             <a
-              href="#pricing"
+              href={CTA_HREF}
               className="inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
               style={{
                 boxShadow:

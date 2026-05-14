@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { CTA_HREF } from "@/lib/launch";
 import InboxHealthAnimation from "@/components/InboxHealthAnimation";
 
 const FLAME_CONFIGS = [
@@ -142,14 +143,14 @@ export default function Hero() {
             }}
           >
             <a
-              href="/waitlist"
+              href={CTA_HREF}
               className="inline-flex items-center rounded-full bg-brand-green px-7 py-3.5 text-sm font-black uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
               style={{
                 boxShadow:
                   "0 0 0 1px rgba(74,222,128,0.3), 0 8px 32px rgba(74,222,128,0.30)",
               }}
             >
-              Join the Waiting List&nbsp;&rarr;
+              Get Started Free&nbsp;&rarr;
             </a>
 
             <a

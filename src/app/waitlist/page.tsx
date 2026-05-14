@@ -382,7 +382,7 @@ export default function WaitlistPage() {
                       : "0 0 0 1px rgba(74,222,128,0.3), 0 8px 32px rgba(74,222,128,0.25)",
                   }}
                 >
-                  {loading ? "Joining…" : "Join the Waiting List →"}
+                  {loading ? "Sending…" : "Get Early Access →"}
                 </button>
               </form>
             </div>

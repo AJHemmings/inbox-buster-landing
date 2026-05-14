@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import BrandIcon from "@/components/BrandIcon";
+import { CTA_HREF } from "@/lib/launch";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
@@ -43,7 +44,13 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#pricing"
+            href="https://app.inboxbuster.com/login"
+            className="hidden md:inline-flex text-sm font-semibold text-white/60 transition-colors duration-200 hover:text-white"
+          >
+            Sign In
+          </a>
+          <a
+            href={CTA_HREF}
             className="hidden md:inline-flex items-center rounded-full bg-brand-green px-5 py-2 text-sm font-bold uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-100"
           >
             Get Started Free
@@ -79,7 +86,14 @@ export default function Navbar() {
           </ul>
           <div className="mt-5 border-t border-white/10 pt-5">
             <a
-              href="#pricing"
+              href="https://app.inboxbuster.com/login"
+              className="block text-sm font-semibold uppercase tracking-wider text-white/70 transition-colors duration-200 hover:text-white mb-4"
+              onClick={() => setOpen(false)}
+            >
+              Sign In
+            </a>
+            <a
+              href={CTA_HREF}
               className="block w-full rounded-full bg-brand-green py-3 text-center text-sm font-bold uppercase tracking-wider text-brand-dark transition-all duration-200 hover:brightness-110 active:scale-95"
               onClick={() => setOpen(false)}
             >

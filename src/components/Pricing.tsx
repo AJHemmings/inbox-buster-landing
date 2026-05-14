@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { CTA_HREF } from "@/lib/launch";
 
 type BadgeStyle = "gray" | "purple" | "green" | "amber";
 type CtaStyle = "green" | "purple" | "outline" | "amber";
@@ -37,8 +38,8 @@ const PLANS: Plan[] = [
       "Mass deletion",
       "Bulk unsubscribe",
     ],
-    cta: "Join the Waiting List",
-    ctaHref: "/waitlist",
+    cta: "Get Started Free",
+    ctaHref: CTA_HREF,
     ctaStyle: "green",
     hero: false,
     variant: "standard",
@@ -58,8 +59,8 @@ const PLANS: Plan[] = [
       "Bulk unsubscribe",
       "Your price. Your call.",
     ],
-    cta: "Join the Waiting List",
-    // At launch: swap to "https://app.inboxbuster.com/upgrade?amount={amount}" - see backend handover doc
+    cta: "Get Started Free",
+    // LAUNCH: swap to "https://app.inboxbuster.com/upgrade?amount={amount}" once PWYW input is wired
     ctaHref: "/waitlist",
     ctaStyle: "purple",
     hero: true,
@@ -80,8 +81,8 @@ const PLANS: Plan[] = [
       "Bulk unsubscribe",
       "Support ticket access",
     ],
-    cta: "Join the Waiting List",
-    // At launch: swap to "https://app.inboxbuster.com/upgrade?plan=subscription"
+    cta: "Get Started Free",
+    // LAUNCH: swap to "https://app.inboxbuster.com/upgrade?plan=subscription"
     ctaHref: "/waitlist",
     ctaStyle: "outline",
     hero: false,
