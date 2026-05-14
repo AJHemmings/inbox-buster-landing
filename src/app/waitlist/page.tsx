@@ -171,18 +171,6 @@ export default function WaitlistPage() {
                 Be among the first to use InboxBuster and take back control of
                 your inbox.
               </p>
-              <div
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
-                style={{
-                  background: "rgba(139,92,246,0.12)",
-                  borderColor: "rgba(139,92,246,0.35)",
-                }}
-              >
-                <span>🎁</span>
-                <span className="text-xs font-bold text-brand-purple">
-                  First 100 sign-ups get their first year free.
-                </span>
-              </div>
             </div>
 
             {/* Form card */}

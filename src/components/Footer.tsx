@@ -57,9 +57,9 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end gap-0.5 shrink-0">
             <span className="text-sm text-white/60">
-              Available on Android and web
+              Available on web
             </span>
-            <span className="text-xs text-white/30">iOS coming soon</span>
+            <span className="text-xs text-white/30">Android &amp; iOS coming soon</span>
           </div>
         </div>
 

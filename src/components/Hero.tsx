@@ -55,7 +55,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-green" />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-green">
-              Now live on Android &amp; Web
+              Now live on web &middot; Android &amp; iOS coming soon
             </span>
           </div>
 
@@ -173,18 +173,6 @@ export default function Hero() {
               No card required.
             </p>
 
-            <div
-              className="inline-flex items-center gap-2 self-start rounded-full border px-4 py-2"
-              style={{
-                background: "rgba(139,92,246,0.12)",
-                borderColor: "rgba(139,92,246,0.35)",
-              }}
-            >
-              <span>🎁</span>
-              <span className="text-xs font-bold text-brand-purple">
-                First 100 sign-ups get a surprise bonus
-              </span>
-            </div>
           </div>
 
           <p

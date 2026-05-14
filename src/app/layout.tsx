@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://inboxbuster.com"),
   title: "InboxBuster: Clean Your Inbox in Minutes",
   description:
     "Mass delete emails, bulk unsubscribe, and sort your inbox chaos. InboxBuster for Android. Start free. Clear 1000 emails with no card required.",
