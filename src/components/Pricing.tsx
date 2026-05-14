@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { CTA_HREF } from "@/lib/launch";
@@ -59,9 +59,8 @@ const PLANS: Plan[] = [
       "Bulk unsubscribe",
       "Your price. Your call.",
     ],
-    cta: "Get Started Free",
-    // LAUNCH: swap to "https://app.inboxbuster.com/upgrade?amount={amount}" once PWYW input is wired
-    ctaHref: "/waitlist",
+    cta: "Get Premium",
+    ctaHref: "https://app.inboxbuster.com/upgrade",
     ctaStyle: "purple",
     hero: true,
     variant: "pwyw",
@@ -82,8 +81,7 @@ const PLANS: Plan[] = [
       "Support ticket access",
     ],
     cta: "Get Started Free",
-    // LAUNCH: swap to "https://app.inboxbuster.com/upgrade?plan=subscription"
-    ctaHref: "/waitlist",
+    ctaHref: "https://app.inboxbuster.com/upgrade?plan=subscription",
     ctaStyle: "outline",
     hero: false,
     variant: "standard",
@@ -204,6 +202,12 @@ function CtaButton({
 }
 
 function PricingCard({ plan, index }: { plan: Plan; index: number }) {
+  const [amount, setAmount] = useState("");
+  const ctaHref =
+    plan.variant === "pwyw"
+      ? `https://app.inboxbuster.com/upgrade?amount=${amount}`
+      : plan.ctaHref;
+
   return (
     <div
       className={[
@@ -227,16 +231,31 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       </div>
 
       {plan.variant === "pwyw" ? (
-        // Pre-launch: show static copy. At launch, restore the amount input here -
-        // see docs/plans/pwyw-backend-handover.md for the full launch checklist.
-        <div className="mb-2 flex flex-col gap-1">
-          <span
-            className="font-black tracking-tight text-white"
-            style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", lineHeight: 1.15 }}
-          >
-            You choose
-          </span>
-          <span className="text-sm font-medium text-white/40">one-off</span>
+        <div className="mb-2">
+          <p className="mb-1.5 text-xs font-bold uppercase tracking-widest text-white/40">
+            Your amount
+          </p>
+          <div className="flex items-baseline gap-1">
+            <span
+              className="font-black tracking-tight text-white"
+              style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1 }}
+            >
+              £
+            </span>
+            <input
+              type="number"
+              min="1"
+              step="1"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="5"
+              aria-label="Amount in pounds"
+              className="w-20 bg-transparent font-black tracking-tight text-white outline-none border-b-2 border-brand-purple/40 focus:border-brand-purple placeholder:text-white/20"
+              style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", lineHeight: 1 }}
+            />
+            <span className="text-sm font-medium text-white/40">one-off</span>
+          </div>
+          <p className="mt-1.5 text-xs text-white/30">minimum £1</p>
         </div>
       ) : (
         <div className="mb-2 flex items-baseline gap-1">
@@ -292,7 +311,7 @@ function PricingCard({ plan, index }: { plan: Plan; index: number }) {
       </ul>
 
       <div className="mt-auto">
-        <CtaButton style={plan.ctaStyle} label={plan.cta} href={plan.ctaHref} />
+        <CtaButton style={plan.ctaStyle} label={plan.cta} href={ctaHref} />
       </div>
     </div>
   );
